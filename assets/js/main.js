@@ -276,10 +276,11 @@
    */
   function aos_init() {
     AOS.init({
-      duration: 1000,
+      duration: 300,
       easing: "ease-in-out",
       once: true,
-      mirror: false
+      delay: 0,
+      mirror: false,
     });
   }
   window.addEventListener('load', () => {
