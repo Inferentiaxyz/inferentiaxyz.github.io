@@ -521,53 +521,8 @@ clear and understandable explanations about the logic behind automated decision-
             </div>
 
           </div>
-<script>const form = document.getElementById("form");
-const result = document.getElementById("result");
-
-form.addEventListener("submit", function (e) {
-  const formData = new FormData(form);
-  e.preventDefault();
-  var object = {};
-  formData.forEach((value, key) => {
-    object[key] = value;
-  });
-  var json = JSON.stringify(object);
-  result.innerHTML = "Please wait...";
-
-  fetch("https://api.web3forms.com/submit", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    },
-    body: json
-  })
-    .then(async (response) => {
-      let json = await response.json();
-      if (response.status == 200) {
-        result.innerHTML = json.message;
-        result.classList.remove("text-gray-500");
-        result.classList.add("text-green-500");
-      } else {
-        console.log(response);
-        result.innerHTML = json.message;
-        result.classList.remove("text-gray-500");
-        result.classList.add("text-red-500");
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-      result.innerHTML = "Something went wrong!";
-    })
-    .then(function () {
-      form.reset();
-      setTimeout(() => {
-        result.style.display = "none";
-      }, 5000);
-    });
-});</script>
           <div class="col-lg-6">
-            <form  method="post" action="https://api.web3forms.com/submit" method="POST" id="form" class="php-email-form">
+            <form   method="POST" action="https://api.web3forms.com/submit" id="form" class="php-email-form">
               <input type="hidden" name="access_key" value="0a267740-4f7a-417b-985f-20b7983145f6" />
               <div class="row gy-4">
 
@@ -589,7 +544,7 @@ form.addEventListener("submit", function (e) {
 
                 <div class="col-md-12 text-center">
                   <div class="loading">Loading</div>
-                  <div class="error-message"></div>
+                  <div class="error-message">There was an error, try again later!</div>
                   <div class="sent-message">Your message has been sent. Thank you!</div>
 
                   <button type="submit">Send Message</button>
@@ -606,6 +561,59 @@ form.addEventListener("submit", function (e) {
 
     </section><!-- End Contact Section -->
 
+<script>const form = document.getElementById('form');
+const result = document.getElementById('result');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const formData = new FormData(form);
+  const object = Object.fromEntries(formData);
+  const json = JSON.stringify(object);
+  //result.innerHTML = "Please wait..."
+  var loadingd = document.getElementsByClassName("loading")[0];
+  var errord = document.getElementsByClassName("error-message")[0];
+  var sentd = document.getElementsByClassName("sent-message")[0];
+    loadingd.classList.add('d-block');
+      sentd.classList.remove('d-block');
+      errord.classList.remove('d-block');
+    fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let json = await response.json();
+            if (response.status == 200) {
+              loadingd.classList.remove('d-block');
+    sentd.classList.add('d-block');
+                //result.innerHTML = json.message;
+            } else {
+                console.log(response);
+
+              loadingd.classList.remove('d-block');
+    errord.classList.add('d-block');
+              //  result.innerHTML = json.message;
+            }
+        })
+        .catch(error => {
+            console.log(error);
+              loadingd.classList.remove('d-block');
+    errord.classList.add('d-block');
+            //alert("Something went wrong!");
+        })
+        .then(function() {
+            form.reset();
+            setTimeout(() => {
+              loadingd.classList.remove('d-block');
+      sentd.classList.remove('d-block');
+      errord.classList.remove('d-block');
+                //result.style.display = "none";
+            }, 3000);
+        });
+});</script>
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -672,7 +680,6 @@ form.addEventListener("submit", function (e) {
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
