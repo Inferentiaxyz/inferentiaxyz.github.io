@@ -1437,7 +1437,7 @@ section {
   top: 30px;
   opacity: 0;
   border-radius: 4px;
-  transition: 0.5s;
+  transition: 1s;
   background: rgba(255, 255, 255, 0.3);
   z-index: 2;
 }
@@ -1490,7 +1490,7 @@ section {
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
 }
 
-.team .member:hover .social {
+.team .member .social {
   right: 8px;
   opacity: 1;
 }
