@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Guida per avere un LLM sul tuo PC!</title>
+
+    <meta content="Come installare GPT sul tuo pc" name="description">
+  
+    <meta content="Explainable AI, Membership Inference Attack, privacy risk assessment of machine learning models, machine learning, inferentia, data analysis, consulting, neural network, artificial intelligence, GPT, LLM, language model, nlp, chatbot" name="keywords">
+  
+    <!-- Favicons -->
+    <link href="assets/img/logo2.png" rel="icon">
+    <link href="assets/img/logo2.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: FlexStart - v1.12.0
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XTPD53MNTL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-XTPD53MNTL');
+  </script>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/manucaralmo/GlowCookies@3.1.7/src/glowCookies.min.js"></script>
+  <script>
+      glowCookies.start('en', { 
+          style: 1,
+          analytics: 'G-XTPD53MNTL', 
+          policyLink: 'https://inferentia.xyz/privacy_policy.html'
+      });
+  </script>
+  <!-- ======= Header ======= -->
+<header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo2.png" alt="">
+        <span>Inferentia</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="/index.html#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="/index.html#about">About</a></li>
+          <li><a class="nav-link scrollto" href="/index.html#pricing">Services</a></li>
+          <!-- <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li> -->
+          <li><a class="nav-link scrollto" href="/index.html#team">Team</a></li>
+          <li><a class="active" href="#">Blog</a></li>
+          <li><a class="nav-link scrollto" href="/index.html#community">Discord</a></li>
+          <li><a class="nav-link scrollto" href="/index.html#contact">Contact</a></li>
+          <li><a class="getstarted scrollto" href="/index.html#contact">Let's talk</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-8 entries">
+
+            <article class="entry entry-single">
+
+              <div class="entry-img">
+                <img src="assets/img/vicuna.jpeg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="entry-title">
+                <a href="#">Guida per installare un LLM sul tuo PC!</a>
+              </h2>
+
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2023-04-18">Apr 18, 2023</time></a></li>
+                </ul>
+              </div>
+
+              <div class="entry-content">
+                <p>Il modello Vicuna è considerato al momento il miglior chatbot gratuito.
+                Vicuna-13B raggiunge una qualità del 90%* rispetto a OpenAI ChatGPT e Google Bard, superando altri modelli come LLaMA e Stanford Alpaca in oltre il 90%* dei casi.</p>
+                
+                <p>In questo articolo, ti guideremo su come eseguire il modello Vicuna sul tuo computer locale, utilizzando la tua CPU o GPU.</p>
+
+                <h3>Conda</h3>
+                <p>Il primo step da effettuare, sia se si vuole usare CPU che GPU è quello di installare Conda. Conda è un gestore di pacchetti open-source che viene utilizzato principalmente per la gestione degli ambienti di sviluppo in Python. Conda permette di creare facilmente ambienti virtuali isolati e gestire le dipendenze dei pacchetti in modo efficiente, permettendo così di lavorare su progetti con diverse versioni di librerie e pacchetti senza incorrere in problemi di compatibilità.</p>
+<pre>
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+sha256sum Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+source ~/.bashrc
+</pre>
+
+                <h3>Installazione per GPU (GPTQ Quantised)</h3>
+                
+                <p>Per installare il modello Vicuna con la tua GPU, devi prima creare un ambiente virtuale utilizzando Conda.</p> 
+<pre>
+conda create -n vicuna python=3.9
+conda activate vicuna</pre>
+
+                <p>Successivamente, installa l'interfaccia web per interagire con il modello Vicuna. </p>
+                  
+<pre>
+git clone https://github.com/oobabooga/text-generation-webui.git
+cd text-generation-webui
+pip install -r requirements.txt
+</pre>
+
+                 <p> Per utilizzare la versione del modello quantizzato GPTQ scarichiamo la seguente repository in una sottocartella.</p>
+
+<pre>
+mkdir repositories
+cd repositories
+git clone https://github.com/oobabooga/GPTQ-for-LLaMa.git -b cuda
+cd GPTQ-for-LLaMa
+python setup_cuda.py install</pre>
+
+                  <p>Adesso possiamo scaricare il modello</p>
+
+<pre>
+cd ../..
+python download-model.py anon8231489123/vicuna-13b-GPTQ-4bit-128g</pre>
+
+                  <p>Infine possiamo quindi avviare l'interfaccia web e utilizzare il modello Vicuna.</p>
+                  <pre>python server.py --chat --model anon8231489123_vicuna-13b-GPTQ-4bit-128g --model_type LLaMA --wbits 4 --groupsize 128 --share</pre>
+
+                  <h3>Installazione per CPU (GGML Quantised)</h3>
+                
+                <p>Iniziamo con il creare un ambiente virtuale utilizzando Conda.</p>
+    <pre>
+conda create -n vicuna python=3.9
+conda activate vicuna</pre>
+
+
+                <p>In seguito, cloniamo ed installiamo il repository llama.cpp</p>
+
+<pre>
+  git clone https://github.com/ggerganov/llama.cpp.git
+  cd llama.cpp
+  make</pre>
+                
+                  <p>
+                Per scaricare i binari del modello quantizzato possiamo utilizzare il modulo Python huggingface-hub che si installa con il seguente codice:</p>
+
+          <pre>pip install huggingface-hub</pre>
+                
+                <p>Adesso utilizzando l'interprete python possiamo scaricare il modello</p>
+
+<pre>
+python
+
+>>> from huggingface_hub import hf_hub_download
+>>> hf_hub_download(repo_id="eachadea/ggml-vicuna-13b-4bit", filename="ggml-vicuna-13b-4bit.bin", local_dir="./models")
+>>> exit()</pre>
+
+                <p>Infine per interagire con il modello eseguiamo:</p>
+
+<pre>
+  ./main -m ./models/ggml-vicuna-13b-4bit.bin --color -f ./prompts/alpaca.txt -ins -b 256 --top_k 10000 --temp 0.2 --repeat_penalty 1 -t 7
+</pre>
+                
+                <p>Speriamo che questo articolo sia stata utile. Pubblicheremo altri articoli in futuro su come utilizzare i modelli AI e su come funzionano. Siamo sempre felici di rispondere alle domande o discutere le idee proposte nei nostri articoli. Quindi non esitare a contattarci e assicurati di seguirci per non perdere i nuovi articoli.</p>
+              </div>
+
+             
+
+            </article><!-- End blog entry -->
+
+          </div><!-- End blog entries list -->
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Single Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 col-md-12 footer-info">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <img src="assets/img/logo2.png" alt="">
+              <span>Inferentia</span>
+            </a>
+            <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+            -->
+            <div class="social-links mt-3">
+              <a href="https://github.com/Inferentiaxyz" class="instagram"><i class="bi bi-github"></i></a>
+              <a href="https://www.linkedin.com/company/inferentiaxyz/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#about">About us</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#pricing">Services</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="https://inferentia.xyz/privacy_policy.html">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#p-consultancy">Consultancy</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#p-dataan">Data analysis/AI design</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#p-exp">Explainable AI</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#p-privacy">Privacy risk assessment</a></li>
+              
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Inferentia</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/Inferentia-bootstrap-startup-template/ -->
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
