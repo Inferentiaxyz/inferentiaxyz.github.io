@@ -5,25 +5,16 @@ let audio1 = new Audio(
     document.getElementById("chat-open").style.display = "none";
     document.getElementById("chat-close").style.display = "block";
     document.getElementById("chat-window1").style.display = "block";
-  
-    audio1.load();
-    audio1.play();
   }
   function chatClose() {
     document.getElementById("chat-open").style.display = "block";
     document.getElementById("chat-close").style.display = "none";
     document.getElementById("chat-window1").style.display = "none";
     document.getElementById("chat-window2").style.display = "none";
-  
-    audio1.load();
-    audio1.play();
   }
   function openConversation() {
     document.getElementById("chat-window2").style.display = "block";
     document.getElementById("chat-window1").style.display = "none";
-  
-    audio1.load();
-    audio1.play();
   }
   
   //Gets the text from the input box(user)
@@ -37,13 +28,7 @@ let audio1 = new Audio(
       document.getElementById("messageBox").innerHTML += `<div class="first-chat">
         <p>${userText}</p>
         <div class="arrow"></div>
-      </div>`;
-      let audio3 = new Audio(
-        "https://prodigits.co.uk/content/ringtones/tone/2020/alert/preview/4331e9c25345461.mp3"
-      );
-      audio3.load();
-      audio3.play();
-  
+      </div>`;  
       document.getElementById("textInput").value = "";
       var objDiv = document.getElementById("messageBox");
       objDiv.scrollTop = objDiv.scrollHeight;
@@ -86,11 +71,6 @@ let audio1 = new Audio(
           <p>${message}</p>
           <div class="arrow"></div>
         </div>`;
-      let audio3 = new Audio(
-        "https://downloadwap.com/content2/mp3-ringtones/tone/2020/alert/preview/56de9c2d5169679.mp3"
-      );
-      audio3.load();
-      audio3.play();
 
       var objDiv = document.getElementById("messageBox");
       objDiv.scrollTop = objDiv.scrollHeight;
@@ -121,11 +101,6 @@ let audio1 = new Audio(
             <p>${message}</p>
             <div class="arrow"></div>
           </div>`;
-        let audio3 = new Audio(
-          "https://downloadwap.com/content2/mp3-ringtones/tone/2020/alert/preview/56de9c2d5169679.mp3"
-        );
-        audio3.load();
-        audio3.play();
   
         var objDiv = document.getElementById("messageBox");
         objDiv.scrollTop = objDiv.scrollHeight;
