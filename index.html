@@ -9,7 +9,15 @@
   <meta content="Our focus is explainability and privacy-preserving machine learning models that comply with GDPR regulations." name="description">
 
   <meta content="Explainable AI, Membership Inference Attack, privacy risk assessment of machine learning models, machine learning, inferentia, data analysis, consulting, neural network, artificial intelligence" name="keywords">
-
+  <link
+      rel="Tab icon"
+      href="assets/img/logo_vect.png"
+      type="image/png"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
   <!-- Favicons -->
   <link href="assets/img/logo2.png" rel="icon">
   <link href="assets/img/logo2.png" rel="apple-touch-icon">
@@ -27,7 +35,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+  <script src="assets/js/chat.js"></script>
   <!-- =======================================================
   * Template Name: Inferentia - v1.12.0
   * Template URL: https://bootstrapmade.com/Inferentia-bootstrap-startup-template/
@@ -664,6 +672,82 @@ form.addEventListener('submit', function(e) {
       </div>
     </div>
   </footer><!-- End Footer -->
+
+  <!-- Popup chat window -->
+
+    <!-- chat open -->
+    <div class="chat-bar-open" id="chat-open">
+      <button
+        id="chat-open-button"
+        type="button"
+        class="collapsible close"
+        onclick="chatOpen()"
+      >
+        <img src="assets/img/logo2.png" alt="Inferentia logo" />
+      </button>
+    </div>
+
+    <!-- chat close -->
+    <div class="chat-bar-close" id="chat-close">
+      <button
+        id="chat-close-button"
+        type="button"
+        class="collapsible close"
+        onclick="chatClose()"
+      >
+        <i class="material-icons-outlined"> close </i>
+      </button>
+    </div>
+
+    <!-- chat-window 1 -->
+    <div class="chat-window" id="chat-window1">
+      <div class="hi-there">
+        <p class="p1">Hi There im the Inferentia AI</p>
+        <p class="p2">Ask me anythig in any language</p>
+      </div>
+      <div class="start-conversation">
+        <h1>Start a Conversation</h1>
+        <button
+          class="new-conversation"
+          type="button"
+          onclick="openConversation()"
+        >
+          <span>New Conversation</span
+          ><i class="material-icons-outlined"> send </i>
+        </button>
+      </div>
+    </div>
+
+    <!-- chat chat-window 2 -->
+    <div class="chat-window2" id="chat-window2">
+      <div class="message-box" id="messageBox">
+        <div class="hi-there">
+          <p class="p1">Hi There - Inferentia AI</p>
+          <br />
+          <p class="p2">Ask me anything you want.</p>
+        </div>
+      </div>
+      <div class="input-box">
+        <div class="write-reply">
+          <input
+            class="inputText"
+            type="text"
+            id="textInput"
+            placeholder="Write a reply..."
+          />
+        </div>
+        <div class="send-button">
+          <button
+            type="submit"
+            class="send-message"
+            id="send"
+            onclick="userResponse()"
+          >
+            <i class="material-icons-outlined"> send </i>
+          </button>
+        </div>
+      </div>
+    </div>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
