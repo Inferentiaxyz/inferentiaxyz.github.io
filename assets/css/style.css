@@ -1567,9 +1567,9 @@ section {
   position: relative;
 }
 
-.recent-blog-posts .post-box .post-img img {
+/* .recent-blog-posts .post-box .post-img img {
   transition: 0.5s;
-}
+} */
 
 .recent-blog-posts .post-box .post-date {
   font-size: 16px;
@@ -1606,9 +1606,9 @@ section {
   color: #4154f1;
 }
 
-.recent-blog-posts .post-box:hover .post-img img {
+/* .recent-blog-posts .post-box:hover .post-img img {
   transform: rotate(6deg) scale(1.2);
-}
+} */
 
 /*--------------------------------------------------------------
 # Contact
