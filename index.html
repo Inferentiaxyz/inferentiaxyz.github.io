@@ -80,6 +80,13 @@ document.addEventListener('DOMContentLoaded', function() {
             videoElement.play();
         });
     });
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => {
+        video.addEventListener('webkitendfullscreen', function() {
+            // This event is triggered when fullscreen is closed on Safari for iOS
+            resetVideoOpacity();
+        });
+    });
 
     // Existing code
 document.addEventListener('fullscreenchange', handleFullscreenChange);
@@ -88,7 +95,7 @@ document.addEventListener('fullscreenchange', handleFullscreenChange);
 document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
 document.addEventListener('mozfullscreenchange', handleFullscreenChange);
 document.addEventListener('msfullscreenchange', handleFullscreenChange);
-document.addEventListener('webkitendfullscreen', handleFullscreenChange);
+/* document.addEventListener('webkitendfullscreen', handleFullscreenChange); */
 /* document.addEventListener('onwebkitfullscreenchange', handleFullscreenChange); */
 
 function handleFullscreenChange() {
