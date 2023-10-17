@@ -53,6 +53,48 @@
 
   gtag('config', 'G-XTPD53MNTL');
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const playButtons = document.querySelectorAll('.play-button');
+
+    playButtons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
+            // Find the nearest video sibling to the clicked button
+            const videoElement = e.target.closest('.post-img').querySelector('video');
+
+            videoElement.style.display = 'block';  // Make the video visible
+            // Check if video is already in fullscreen, if not request fullscreen
+            if (document.fullscreenElement === null) {
+                if (videoElement.requestFullscreen) {
+                    videoElement.requestFullscreen();
+                } else if (videoElement.mozRequestFullScreen) { /* Firefox */
+                    videoElement.mozRequestFullScreen();
+                } else if (videoElement.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+                    videoElement.webkitRequestFullscreen();
+                } else if (videoElement.msRequestFullscreen) { /* IE/Edge */
+                    videoElement.msRequestFullscreen();
+                }
+            }
+
+            videoElement.play();
+        });
+    });
+
+    document.addEventListener('fullscreenchange', function() {
+        if (!document.fullscreenElement) {
+            // User has exited fullscreen mode
+            resetVideoOpacity();
+        }
+    });
+});
+function resetVideoOpacity() {
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => video.style.display = 'none');
+    videos.forEach(video => video.pause());
+}
+
+
+</script>
 
 <body>
     <script src="https://cdn.jsdelivr.net/gh/manucaralmo/GlowCookies@3.1.7/src/glowCookies.min.js"></script>
@@ -201,18 +243,26 @@
 
           <div class="col-lg-4 mb-3">
             <div class="post-box">
-              <div class="post-img"><img src="assets/img/blog/blog-1.jpg" class="img-fluid" alt=""></div>
+              <div class="post-img">
+                <img src="assets/img/BLOG/chat2docs_blue.png" class="img-fluid" alt="">
+                <button class="play-button">&#9658;</button> 
+                <video controls src="assets/video/Chat2Docs.mp4" poster="assets/img/BLOG/chat2docs_blue.png" ></video>
+              </div>
               <h3 class="post-title">Chat2Docs</h3>
-              <span class="post-date">Empower Your Documents! Effortlessly transform the way you manage and interact with your documents.</span>
+              <span class="post-date">Empower Your Documents! Effortlessly transform the way you manage and <b>interact with your documents</b>.</span>
               <!-- <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a> -->
             </div>
           </div>
 
           <div class="col-lg-4 mb-3">
             <div class="post-box">
-              <div class="post-img"><img src="assets/img/blog/blog-2.jpg" class="img-fluid" alt=""></div>
+              <div class="post-img">
+                <img src="assets/img/BLOG/analytibot_blue.png" class="img-fluid" alt="">
+                <button class="play-button">&#9658;</button> 
+               <video controls src="assets/video/AnalytiBot.mp4" poster="assets/img/BLOG/analytibot_blue.png" ></video>
+              </div> 
               <h3 class="post-title">AnalityBot</h3>
-              <span class="post-date">Your Data Analysis Ally! Chat to receive comprehensive data analysis and insightful visualizations. </span>
+              <span class="post-date">Your Data Analysis Ally! Chat to receive comprehensive <b>data analysis and insightful visualizations</b>. </span>
               <!-- <a href="blog-single.html" class="readmore stretched-link mt-auto"><span></span><i class="bi bi-arrow-right"></i></a> -->
             </div>
           </div>
@@ -220,11 +270,12 @@
           <div class="col-lg-4 mb-3">
             <div class="post-box">
               <div class="post-img">
-               <!--  <img src="assets/img/blog/blog-3.jpg" class="img-fluid" alt=""> -->
-               <!-- <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4#t=9" class="object-fit-none" autoplay></video> -->
+                <img src="assets/img/BLOG/mike_blue.png" class="img-fluid" alt="">
+                <button class="play-button">&#9658;</button> 
+               <video controls src="assets/video/Mike.mp4" poster="assets/img/BLOG/mike_blue.png" ></video>
               </div>
-              <h3 class="post-title">Sara</h3>
-              <span class="post-date">Introducing Sara, your all-in-one solution for exceptional customer care and lead generation!</span>
+              <h3 class="post-title">Mike</h3>
+              <span class="post-date">Introducing Mike, your all-in-one solution for exceptional <b>customer care and lead generation!</b></span>
               <!-- <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a> -->
             </div>
           </div>

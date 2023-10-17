@@ -2741,3 +2741,32 @@ section {
   max-height: 100px; /* Adjust as needed */
   margin-bottom: 10px;
 }
+
+.post-img video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.6); /* Colore di sfondo semi-trasparente */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.play-button:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Rende il colore di sfondo leggermente più scuro al passaggio del mouse */
+}
+
+video {
+  display: none
+}
