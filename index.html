@@ -54,6 +54,7 @@
   gtag('config', 'G-XTPD53MNTL');
 </script>
 <script>
+  
 document.addEventListener('DOMContentLoaded', function() {
     const playButtons = document.querySelectorAll('.play-button');
 
@@ -80,12 +81,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    document.addEventListener('fullscreenchange', function() {
-        if (!document.fullscreenElement) {
-            // User has exited fullscreen mode
-            resetVideoOpacity();
-        }
-    });
+    // Existing code
+document.addEventListener('fullscreenchange', handleFullscreenChange);
+
+// Vendor-specific events for fullscreen changes
+document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+document.addEventListener('msfullscreenchange', handleFullscreenChange);
+
+function handleFullscreenChange() {
+    if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
+        resetVideoOpacity();
+    }
+}
 });
 function resetVideoOpacity() {
     const videos = document.querySelectorAll('video');
