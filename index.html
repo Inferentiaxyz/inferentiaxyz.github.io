@@ -35,7 +35,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  <script src="assets/js/chat.js"></script>
+  <!-- <script src="assets/js/chat.js"></script> -->
   <!-- =======================================================
   * Template Name: Inferentia - v1.12.0
   * Template URL: https://bootstrapmade.com/Inferentia-bootstrap-startup-template/
@@ -953,7 +953,19 @@ form.addEventListener('submit', function(e) {
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <script type="text/javascript">
+    (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+          window.voiceflow.chat.load({
+            verify: { projectID: '6558c2a0f587c021f85e9aa9' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production'
+          });
+        }
+        v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
 </body>
 
 </html>
