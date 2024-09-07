@@ -5,8 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comparatore Modelli LLM</title>
+    <!-- Nuovi meta tag per SEO -->
+    <meta name="description" content="Confronta le prestazioni e i costi dei principali modelli di linguaggio AI come GPT-4, Claude 3, Gemini, Llama, e altri. Analizza caratteristiche come MMLU, HellaSwag, HumanEval, BBHard, GSM-8K, MATH e finestra di contesto.">
+    <meta name="keywords" content="LLM, AI, GPT-4, Claude 3 Opus, Claude 3.5 Sonnet, Gemini Ultra, Llama 3, Mistral, Grok, comparatore AI, modelli linguistici, intelligenza artificiale">
+    <meta name="robots" content="index, follow">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link
+      rel="Tab icon"
+      href="assets/img/logo_vect.png"
+      type="image/png"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+    
+  <!-- Favicons -->
+  <link href="assets/img/logo2.png" rel="icon">
+  <link href="assets/img/logo2.png" rel="apple-touch-icon">
     <style>
         body {
             background-color: #f4f4f4;
@@ -25,12 +52,31 @@
         }
     </style>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XTPD53MNTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XTPD53MNTL');
+</script>
 <body>
+    <script src="https://cdn.jsdelivr.net/gh/manucaralmo/GlowCookies@3.1.7/src/glowCookies.min.js"></script>
+    <script>
+        glowCookies.start('en', { 
+            style: 1,
+            analytics: 'G-XTPD53MNTL', 
+            policyLink: 'https://inferentia.xyz/privacy_policy.html'
+        });
+    </script>
+
     <div class="container">
         <h1>Comparatore di Modelli LLM</h1>
 
         <!-- Selettori di modelli -->
         <div class="row mb-4">
+            
             
             <div class="col-md-6">
                 <select class="form-select" id="model1" onchange="updateComparison()">
