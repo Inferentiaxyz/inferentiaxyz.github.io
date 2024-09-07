@@ -31,24 +31,85 @@
 
         <!-- Selettori di modelli -->
         <div class="row mb-4">
+            
             <div class="col-md-6">
                 <select class="form-select" id="model1" onchange="updateComparison()">
                     <option value="">Seleziona Modello 1</option>
-                    <option value="Claude 3.5 Sonnet">Claude 3.5 Sonnet</option>
-                    <option value="Claude 3 Opus">Claude 3 Opus</option>
-                    <option value="Gemini 1.5 Pro">Gemini 1.5 Pro</option>
-                    <option value="Gemini Ultra">Gemini Ultra</option>
-                    <option value="GPT-4">GPT-4</option>
+                    <optgroup label="OpenAI">
+                        <option value="GPT-4">GPT-4</option>
+                        <option value="GPT-4-32k">GPT-4-32k</option>
+                        <option value="GPT-4T 2024-04-09">GPT-4T 2024-04-09</option>
+                        <option value="GPT-4o">GPT-4o</option>
+                        <option value="GPT-4o mini">GPT-4o mini</option>
+                        <option value="GPT-3.5">GPT-3.5 Turbo</option>
+                        <option value="GPT-3.5 Turbo Instruct">GPT-3.5 Turbo Instruct</option>
+                    </optgroup>
+                    <optgroup label="Anthropic">
+                        <option value="Claude 3 Opus">Claude 3 Opus</option>
+                        <option value="Claude 3.5 Sonnet">Claude 3.5 Sonnet</option>
+                        <option value="Claude 3 Sonnet">Claude 3 Sonnet</option>
+                        <option value="Claude 3 Haiku">Claude 3 Haiku</option>
+                    </optgroup>
+                    <optgroup label="Meta (Llama)">
+                        <option value="Llama 3 Instruct - 70B">Llama 3 Instruct - 70B</option>
+                        <option value="Llama 3 Instruct - 8B">Llama 3 Instruct - 8B</option>
+                    </optgroup>
+                    <optgroup label="Google">
+                        <option value="Gemini Ultra">Gemini Ultra</option>
+                        <option value="Gemini 1.5 Pro">Gemini 1.5 Pro</option>
+                        <option value="Gemini 1.5 Flash">Gemini 1.5 Flash</option>
+                        <option value="Gemini Pro">Gemini Pro</option>
+                    </optgroup>
+                    <optgroup label="Mistral AI">
+                        <option value="Mistral Large">Mistral Large</option>
+                        <option value="Mistral Medium">Mistral Medium</option>
+                        <option value="Mistral Small">Mistral Small</option>
+                        <option value="Mixtral 8×7B">Mixtral 8×7B</option>
+                    </optgroup>
+                    <optgroup label="Altri">
+                        <option value="Grok 1.5">Grok 1.5</option>
+                        <option value="Nemotron">Nemotron</option>
+                    </optgroup>
                 </select>
             </div>
             <div class="col-md-6">
                 <select class="form-select" id="model2" onchange="updateComparison()">
                     <option value="">Seleziona Modello 2</option>
-                    <option value="Claude 3.5 Sonnet">Claude 3.5 Sonnet</option>
-                    <option value="Claude 3 Opus">Claude 3 Opus</option>
-                    <option value="Gemini 1.5 Pro">Gemini 1.5 Pro</option>
-                    <option value="Gemini Ultra">Gemini Ultra</option>
-                    <option value="GPT-4">GPT-4</option>
+                    <optgroup label="OpenAI">
+                        <option value="GPT-4">GPT-4</option>
+                        <option value="GPT-4-32k">GPT-4-32k</option>
+                        <option value="GPT-4T 2024-04-09">GPT-4T 2024-04-09</option>
+                        <option value="GPT-4o">GPT-4o</option>
+                        <option value="GPT-4o mini">GPT-4o mini</option>
+                        <option value="GPT-3.5">GPT-3.5 Turbo</option>
+                        <option value="GPT-3.5 Turbo Instruct">GPT-3.5 Turbo Instruct</option>
+                    </optgroup>
+                    <optgroup label="Anthropic">
+                        <option value="Claude 3 Opus">Claude 3 Opus</option>
+                        <option value="Claude 3.5 Sonnet">Claude 3.5 Sonnet</option>
+                        <option value="Claude 3 Sonnet">Claude 3 Sonnet</option>
+                        <option value="Claude 3 Haiku">Claude 3 Haiku</option>
+                    </optgroup>
+                    <optgroup label="Meta (Llama)">
+                        <option value="Llama 3 Instruct - 70B">Llama 3 Instruct - 70B</option>
+                        <option value="Llama 3 Instruct - 8B">Llama 3 Instruct - 8B</option>
+                    </optgroup>
+                    <optgroup label="Google">
+                        <option value="Gemini Ultra">Gemini Ultra</option>
+                        <option value="Gemini 1.5 Pro">Gemini 1.5 Pro</option>
+                        <option value="Gemini 1.5 Flash">Gemini 1.5 Flash</option>
+                        <option value="Gemini Pro">Gemini Pro</option>
+                    </optgroup>
+                    <optgroup label="Mistral AI">
+                        <option value="Mistral Large">Mistral Large</option>
+                        <option value="Mistral Medium">Mistral Medium</option>
+                        <option value="Mistral Small">Mistral Small</option>
+                        <option value="Mixtral 8×7B">Mixtral 8×7B</option>
+                    </optgroup>
+                    <optgroup label="Altri">
+                        <option value="Grok 1.5">Grok 1.5</option>
+                        <option value="Nemotron">Nemotron</option>
+                    </optgroup>
                 </select>
             </div>
         </div>
@@ -122,6 +183,11 @@
                     <td id="model1MathProblems">--</td>
                     <td id="model2MathProblems">--</td>
                 </tr>
+                <tr>
+                    <td>Finestra di Contesto (tokens)</td>
+                    <td id="model1ContextWindow">--</td>
+                    <td id="model2ContextWindow">--</td>
+                </tr>
             </tbody>
         </table>
 
@@ -167,7 +233,8 @@
                 math: "96.4",
                 mathProblems: "71.1",
                 inputCost: "3.00",
-                outputCost: "15.00"
+                outputCost: "15.00",
+                contextWindow: "200000"
             },
             "Claude 3 Opus": {
                 average: "84.83",
@@ -178,7 +245,8 @@
                 math: "95.0",
                 mathProblems: "60.1",
                 inputCost: "15.00",
-                outputCost: "75.00"
+                outputCost: "75.00",
+                contextWindow: "200000"
             },
             "Gemini 1.5 Pro": {
                 average: "80.08",
@@ -188,8 +256,9 @@
                 future: "84.0",
                 math: "91.7",
                 mathProblems: "58.5",
-                inputCost: "0.50",
-                outputCost: "1.00"
+                inputCost: "7.00",
+                outputCost: "21.00",
+                contextWindow: "128000"
             },
             "Gemini Ultra": {
                 average: "79.52",
@@ -199,8 +268,9 @@
                 future: "83.6",
                 math: "94.4",
                 mathProblems: "53.2",
-                inputCost: "0.35",
-                outputCost: "0.70"
+                inputCost: "--",
+                outputCost: "--",
+                contextWindow: "--"
             },
             "GPT-4": {
                 average: "79.45",
@@ -210,8 +280,225 @@
                 future: "83.1",
                 math: "92.0",
                 mathProblems: "52.9",
+                inputCost: "30.00",
+                outputCost: "60.00",
+                contextWindow: "8000"
+            },
+            "Llama 3 Instruct - 70B": {
+                average: "79.23",
+                multiChoice: "82.0",
+                reasoning: "87.0",
+                python: "81.7",
+                future: "81.3",
+                math: "93.0",
+                mathProblems: "50.4",
+                inputCost: "8.74",
+                outputCost: "23.27",
+                contextWindow: "8000"
+            },
+            "Claude 3 Haiku": {
+                average: "73.08",
+                multiChoice: "75.2",
+                reasoning: "85.9",
+                python: "75.9",
+                future: "73.7",
+                math: "88.9",
+                mathProblems: "38.9",
+                inputCost: "0.25",
+                outputCost: "1.25",
+                contextWindow: "200000"
+            },
+            "GPT-3.5": {
+                average: "65.46",
+                multiChoice: "70.0",
+                reasoning: "85.5",
+                python: "48.1",
+                future: "66.6",
+                math: "57.1",
+                mathProblems: "34.1",
+                inputCost: "0.50",
+                outputCost: "1.50",
+                contextWindow: "16000"
+            },
+            "Mixtral 8×7B": {
+                average: "59.79",
+                multiChoice: "70.6",
+                reasoning: "84.4",
+                python: "40.2",
+                future: "60.76",
+                math: "74.4",
+                mathProblems: "28.4",
+                inputCost: "--",
+                outputCost: "--",
+                contextWindow: "--"
+            },
+            "GPT-4o": {
+                average: "--",
+                multiChoice: "88.7",
+                reasoning: "--",
+                python: "90.2",
+                future: "--",
+                math: "--",
+                mathProblems: "76.6",
                 inputCost: "5.00",
-                outputCost: "15.00"
+                outputCost: "15.00",
+                contextWindow: "128000"
+            },
+            "GPT-4o mini": {
+                average: "--",
+                multiChoice: "82.0",
+                reasoning: "--",
+                python: "87.0",
+                future: "--",
+                math: "--",
+                mathProblems: "70.2",
+                inputCost: "0.15",
+                outputCost: "0.60",
+                contextWindow: "128000"
+            },
+            "Llama 3 Instruct - 8B": {
+                average: "--",
+                multiChoice: "68.4",
+                reasoning: "--",
+                python: "62.0",
+                future: "--",
+                math: "79.6",
+                mathProblems: "30.0",
+                inputCost: "8.74",
+                outputCost: "23.27",
+                contextWindow: "8000"
+            },
+            "Grok 1.5": {
+                average: "--",
+                multiChoice: "73.0",
+                reasoning: "--",
+                python: "63.0",
+                future: "--",
+                math: "62.9",
+                mathProblems: "23.9",
+                inputCost: "--",
+                outputCost: "--",
+                contextWindow: "--"
+            },
+            "Mistral Large": {
+                average: "--",
+                multiChoice: "81.2",
+                reasoning: "89.2",
+                python: "45.1",
+                future: "--",
+                math: "81.0",
+                mathProblems: "45.0",
+                inputCost: "8.00",
+                outputCost: "24.00",
+                contextWindow: "32000"
+            },
+            "Gemini 1.5 Flash": {
+                average: "--",
+                multiChoice: "78.9",
+                reasoning: "--",
+                python: "--",
+                future: "89.2",
+                math: "--",
+                mathProblems: "67.7",
+                inputCost: "0.35",
+                outputCost: "0.70",
+                contextWindow: "1000000"
+            },
+            "GPT-4T 2024-04-09": {
+                average: "--",
+                multiChoice: "86.5",
+                reasoning: "--",
+                python: "--",
+                future: "87.6",
+                math: "--",
+                mathProblems: "72.2",
+                inputCost: "10.00",
+                outputCost: "30.00",
+                contextWindow: "128000"
+            },
+            "GPT-4-32k": {
+                average: "--",
+                multiChoice: "--",
+                reasoning: "--",
+                python: "--",
+                future: "--",
+                math: "--",
+                mathProblems: "--",
+                inputCost: "60.00",
+                outputCost: "120.00",
+                contextWindow: "32000"
+            },
+            "GPT-3.5 Turbo Instruct": {
+                average: "--",
+                multiChoice: "--",
+                reasoning: "--",
+                python: "--",
+                future: "--",
+                math: "--",
+                mathProblems: "--",
+                inputCost: "1.50",
+                outputCost: "2.00",
+                contextWindow: "4000"
+            },
+            "Claude 3 Sonnet": {
+                average: "--",
+                multiChoice: "--",
+                reasoning: "--",
+                python: "--",
+                future: "--",
+                math: "--",
+                mathProblems: "--",
+                inputCost: "3.00",
+                outputCost: "15.00",
+                contextWindow: "200000"
+            },
+            "Gemini Pro": {
+                average: "--",
+                multiChoice: "--",
+                reasoning: "--",
+                python: "--",
+                future: "--",
+                math: "--",
+                mathProblems: "--",
+                inputCost: "0.125",
+                outputCost: "0.375",
+                contextWindow: "32000"
+            },
+            "Mistral Medium": {
+                average: "--",
+                multiChoice: "--",
+                reasoning: "--",
+                python: "--",
+                future: "--",
+                math: "--",
+                mathProblems: "--",
+                inputCost: "2.70",
+                outputCost: "8.10",
+                contextWindow: "32000"
+            },
+            "Mistral Small": {
+                average: "--",
+                multiChoice: "--",
+                reasoning: "--",
+                python: "--",
+                future: "--",
+                math: "--",
+                mathProblems: "--",
+                inputCost: "2.00",
+                outputCost: "6.00",
+                contextWindow: "16000"
+            },
+            "Nemotron": {
+                average: "--",
+                multiChoice: "--",
+                reasoning: "--",
+                python: "--",
+                future: "--",
+                math: "--",
+                mathProblems: "--",
+                inputCost: "8.74",
+                outputCost: "23.27",
+                contextWindow: "4000"
             }
         };
 
@@ -265,6 +552,7 @@
 
                 document.getElementById("model1InputCost").textContent = `$${modelsData[model1].inputCost}`;
                 document.getElementById("model1OutputCost").textContent = `$${modelsData[model1].outputCost}`;
+                document.getElementById("model1ContextWindow").textContent = modelsData[model1].contextWindow || "--";
             } else {
                 resetModelData("model1");
             }
@@ -285,6 +573,7 @@
 
                 document.getElementById("model2InputCost").textContent = `$${modelsData[model2].inputCost}`;
                 document.getElementById("model2OutputCost").textContent = `$${modelsData[model2].outputCost}`;
+                document.getElementById("model2ContextWindow").textContent = modelsData[model2].contextWindow || "--";
             } else {
                 resetModelData("model2");
             }
@@ -371,9 +660,9 @@
                 elem.style.fontWeight = 'normal';
                 elem.style.color = 'black';
             });
+
+            document.getElementById(`${modelPrefix}ContextWindow`).textContent = "--";
         }
     </script>
 </body>
 </html>
-
-
