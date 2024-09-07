@@ -221,8 +221,7 @@ const modelsNames = {
         "GPT-4",
         "GPT-4T 2024-04-09",
         "GPT-4o",
-        "GPT-4o mini",
-        "GPT-3.5 Turbo"
+        "GPT-4o mini"
     ],
     "Anthropic": [
         "Claude 3 Opus",
