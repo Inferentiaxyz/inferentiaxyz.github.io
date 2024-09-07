@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparatore Modelli LLM</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .comparison-table th, .comparison-table td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Comparatore di Modelli LLM</h1>
+
+        <!-- Selettori di modelli -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <select class="form-select" id="model1" onchange="updateComparison()">
+                    <option value="">Seleziona Modello 1</option>
+                    <option value="Claude 3.5 Sonnet">Claude 3.5 Sonnet</option>
+                    <option value="Claude 3 Opus">Claude 3 Opus</option>
+                    <option value="Gemini 1.5 Pro">Gemini 1.5 Pro</option>
+                    <option value="Gemini Ultra">Gemini Ultra</option>
+                    <option value="GPT-4">GPT-4</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <select class="form-select" id="model2" onchange="updateComparison()">
+                    <option value="">Seleziona Modello 2</option>
+                    <option value="Claude 3.5 Sonnet">Claude 3.5 Sonnet</option>
+                    <option value="Claude 3 Opus">Claude 3 Opus</option>
+                    <option value="Gemini 1.5 Pro">Gemini 1.5 Pro</option>
+                    <option value="Gemini Ultra">Gemini Ultra</option>
+                    <option value="GPT-4">GPT-4</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Aggiungi qui la frase di istruzione -->
+        <p class="text-center text-muted mb-4">Seleziona due modelli dai menu a tendina per confrontare le loro caratteristiche e i costi.</p>
+
+        <!-- Tabella di riepilogo -->
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h4 class="mb-3">Riepilogo Comparazione</h4>
+                <table class="table table-sm table-bordered mx-auto" id="summaryTable" style="display: none; max-width: 400px;">
+                    <thead class="table-light">
+                        <tr>
+                            <th id="summaryModel1" class="text-center">Modello 1</th>
+                            <th id="summaryModel2" class="text-center">Modello 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="summaryDifference1" class="text-center"></td>
+                            <td id="summaryDifference2" class="text-center"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tabella di confronto caratteristiche -->
+        <table class="table table-bordered comparison-table">
+            <thead class="table-primary">
+                <tr>
+                    <th>Caratteristiche</th>
+                    <th id="model1Name">Modello 1</th>
+                    <th id="model2Name">Modello 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Average Score</td>
+                    <td id="model1Average">--</td>
+                    <td id="model2Average">--</td>
+                </tr>
+                <tr>
+                    <td>Multi-choice Qs</td>
+                    <td id="model1MultiChoice">--</td>
+                    <td id="model2MultiChoice">--</td>
+                </tr>
+                <tr>
+                    <td>Reasoning</td>
+                    <td id="model1Reasoning">--</td>
+                    <td id="model2Reasoning">--</td>
+                </tr>
+                <tr>
+                    <td>Python Coding</td>
+                    <td id="model1Python">--</td>
+                    <td id="model2Python">--</td>
+                </tr>
+                <tr>
+                    <td>Future Capabilities</td>
+                    <td id="model1Future">--</td>
+                    <td id="model2Future">--</td>
+                </tr>
+                <tr>
+                    <td>Grade School Math</td>
+                    <td id="model1Math">--</td>
+                    <td id="model2Math">--</td>
+                </tr>
+                <tr>
+                    <td>Math Problems</td>
+                    <td id="model1MathProblems">--</td>
+                    <td id="model2MathProblems">--</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Tabella di confronto prezzi -->
+        <h2 class="mt-5">Confronto Prezzi</h2>
+        <table class="table table-bordered comparison-table">
+            <thead class="table-primary">
+                <tr>
+                    <th>Prezzi</th>
+                    <th id="model1PriceName">Modello 1</th>
+                    <th id="model2PriceName">Modello 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Costo per Milione di Token Input</td>
+                    <td id="model1InputCost">--</td>
+                    <td id="model2InputCost">--</td>
+                </tr>
+                <tr>
+                    <td>Costo per Milione di Token Output</td>
+                    <td id="model1OutputCost">--</td>
+                    <td id="model2OutputCost">--</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Rimuovi la frase da qui -->
+        <!-- <p class="note text-center text-muted mt-4">Seleziona due modelli dai menu a tendina per confrontare le loro caratteristiche e i costi.</p> -->
+    </div>
+
+    <!-- Bootstrap JS + Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const modelsData = {
+            "Claude 3.5 Sonnet": {
+                average: "88.38",
+                multiChoice: "88.7",
+                reasoning: "89.0",
+                python: "92.0",
+                future: "93.1",
+                math: "96.4",
+                mathProblems: "71.1",
+                inputCost: "3.00",
+                outputCost: "15.00"
+            },
+            "Claude 3 Opus": {
+                average: "84.83",
+                multiChoice: "86.8",
+                reasoning: "95.4",
+                python: "84.9",
+                future: "86.8",
+                math: "95.0",
+                mathProblems: "60.1",
+                inputCost: "15.00",
+                outputCost: "75.00"
+            },
+            "Gemini 1.5 Pro": {
+                average: "80.08",
+                multiChoice: "81.9",
+                reasoning: "92.5",
+                python: "71.9",
+                future: "84.0",
+                math: "91.7",
+                mathProblems: "58.5",
+                inputCost: "0.50",
+                outputCost: "1.00"
+            },
+            "Gemini Ultra": {
+                average: "79.52",
+                multiChoice: "83.7",
+                reasoning: "87.8",
+                python: "74.4",
+                future: "83.6",
+                math: "94.4",
+                mathProblems: "53.2",
+                inputCost: "0.35",
+                outputCost: "0.70"
+            },
+            "GPT-4": {
+                average: "79.45",
+                multiChoice: "86.4",
+                reasoning: "95.3",
+                python: "67.0",
+                future: "83.1",
+                math: "92.0",
+                mathProblems: "52.9",
+                inputCost: "5.00",
+                outputCost: "15.00"
+            }
+        };
+
+        function updateComparison() {
+            const model1 = document.getElementById("model1").value;
+            const model2 = document.getElementById("model2").value;
+
+            document.getElementById("model1Name").textContent = model1 || "Modello 1";
+            document.getElementById("model2Name").textContent = model2 || "Modello 2";
+            document.getElementById("model1PriceName").textContent = model1 || "Modello 1";
+            document.getElementById("model2PriceName").textContent = model2 || "Modello 2";
+            document.getElementById("summaryModel1").textContent = model1 || "Modello 1";
+            document.getElementById("summaryModel2").textContent = model2 || "Modello 2";
+
+            if (model1 && model2 && modelsData[model1] && modelsData[model2]) {
+                const score1 = parseFloat(modelsData[model1].average);
+                const score2 = parseFloat(modelsData[model2].average);
+                const difference = Math.abs(score1 - score2).toFixed(2);
+
+                document.getElementById("summaryDifference1").textContent = "";
+                document.getElementById("summaryDifference2").textContent = "";
+                document.getElementById("summaryDifference1").style.color = "";
+                document.getElementById("summaryDifference2").style.color = "";
+
+                if (score1 > score2) {
+                    document.getElementById("summaryDifference1").textContent = `+${difference}%`;
+                    document.getElementById("summaryDifference1").style.color = "green";
+                } else if (score2 > score1) {
+                    document.getElementById("summaryDifference2").textContent = `+${difference}%`;
+                    document.getElementById("summaryDifference2").style.color = "green";
+                }
+
+                document.getElementById("summaryTable").style.display = "table";
+            } else {
+                document.getElementById("summaryTable").style.display = "none";
+            }
+
+            if (model1 && modelsData[model1]) {
+                const characteristics = ['Average', 'MultiChoice', 'Reasoning', 'Python', 'Future', 'Math', 'MathProblems'];
+                
+                characteristics.forEach(char => {
+                    const key = char.charAt(0).toLowerCase() + char.slice(1);  // Converte in camelCase
+                    const value1 = parseFloat(modelsData[model1][key]);
+                    const elem1 = document.getElementById(`model1${char}`);
+
+                    console.log(`${char}: Model1 = ${value1}`);  // Aggiungi questo log
+
+                    elem1.textContent = isNaN(value1) ? "--" : value1.toFixed(1);
+                    elem1.style.fontWeight = 'normal';
+                });
+
+                document.getElementById("model1InputCost").textContent = `$${modelsData[model1].inputCost}`;
+                document.getElementById("model1OutputCost").textContent = `$${modelsData[model1].outputCost}`;
+            } else {
+                resetModelData("model1");
+            }
+
+            if (model2 && modelsData[model2]) {
+                const characteristics = ['Average', 'MultiChoice', 'Reasoning', 'Python', 'Future', 'Math', 'MathProblems'];
+                
+                characteristics.forEach(char => {
+                    const key = char.charAt(0).toLowerCase() + char.slice(1);  // Converte in camelCase
+                    const value2 = parseFloat(modelsData[model2][key]);
+                    const elem2 = document.getElementById(`model2${char}`);
+
+                    console.log(`${char}: Model2 = ${value2}`);  // Aggiungi questo log
+
+                    elem2.textContent = isNaN(value2) ? "--" : value2.toFixed(1);
+                    elem2.style.fontWeight = 'normal';
+                });
+
+                document.getElementById("model2InputCost").textContent = `$${modelsData[model2].inputCost}`;
+                document.getElementById("model2OutputCost").textContent = `$${modelsData[model2].outputCost}`;
+            } else {
+                resetModelData("model2");
+            }
+
+            if (model1 && model2 && modelsData[model1] && modelsData[model2]) {
+                const characteristics = ['Average', 'MultiChoice', 'Reasoning', 'Python', 'Future', 'Math', 'MathProblems'];
+                
+                characteristics.forEach(char => {
+                    const key = char.charAt(0).toLowerCase() + char.slice(1);  // Converte in camelCase
+                    const value1 = parseFloat(modelsData[model1][key]);
+                    const value2 = parseFloat(modelsData[model2][key]);
+                    const elem1 = document.getElementById(`model1${char}`);
+                    const elem2 = document.getElementById(`model2${char}`);
+
+                    if (!isNaN(value1) && !isNaN(value2)) {
+                        if (value1 > value2) {
+                            elem1.style.fontWeight = 'bold';
+                            elem2.style.fontWeight = 'normal';
+                        } else if (value2 > value1) {
+                            elem1.style.fontWeight = 'normal';
+                            elem2.style.fontWeight = 'bold';
+                        } else {
+                            elem1.style.fontWeight = 'normal';
+                            elem2.style.fontWeight = 'normal';
+                        }
+                    } else {
+                        elem1.style.fontWeight = 'normal';
+                        elem2.style.fontWeight = 'normal';
+                    }
+                });
+
+                // Aggiorna i prezzi e evidenzia i più bassi
+                const priceTypes = ['inputCost', 'outputCost'];
+                
+                priceTypes.forEach(priceType => {
+                    const value1 = parseFloat(modelsData[model1][priceType]);
+                    const value2 = parseFloat(modelsData[model2][priceType]);
+                    const elem1 = document.getElementById(`model1${priceType.charAt(0).toUpperCase() + priceType.slice(1)}`);
+                    const elem2 = document.getElementById(`model2${priceType.charAt(0).toUpperCase() + priceType.slice(1)}`);
+
+                    elem1.textContent = isNaN(value1) ? "--" : `$${value1.toFixed(2)}`;
+                    elem2.textContent = isNaN(value2) ? "--" : `$${value2.toFixed(2)}`;
+
+                    if (!isNaN(value1) && !isNaN(value2)) {
+                        if (value1 < value2) {
+                            elem1.style.fontWeight = 'bold';
+                            elem1.style.color = 'green';
+                            elem2.style.fontWeight = 'normal';
+                            elem2.style.color = 'black';
+                        } else if (value2 < value1) {
+                            elem1.style.fontWeight = 'normal';
+                            elem1.style.color = 'black';
+                            elem2.style.fontWeight = 'bold';
+                            elem2.style.color = 'green';
+                        } else {
+                            elem1.style.fontWeight = 'normal';
+                            elem1.style.color = 'black';
+                            elem2.style.fontWeight = 'normal';
+                            elem2.style.color = 'black';
+                        }
+                    } else {
+                        elem1.style.fontWeight = 'normal';
+                        elem1.style.color = 'black';
+                        elem2.style.fontWeight = 'normal';
+                        elem2.style.color = 'black';
+                    }
+                });
+            }
+        }
+
+        function resetModelData(modelPrefix) {
+            const characteristics = ['Average', 'MultiChoice', 'Reasoning', 'Python', 'Future', 'Math', 'MathProblems'];
+            
+            characteristics.forEach(char => {
+                const elem = document.getElementById(`${modelPrefix}${char}`);
+                elem.textContent = "--";
+                elem.style.fontWeight = 'normal';
+            });
+
+            // Resetta anche i prezzi
+            ['InputCost', 'OutputCost'].forEach(priceType => {
+                const elem = document.getElementById(`${modelPrefix}${priceType}`);
+                elem.textContent = "--";
+                elem.style.fontWeight = 'normal';
+                elem.style.color = 'black';
+            });
+        }
+    </script>
+</body>
+</html>
+
+
