@@ -131,6 +131,30 @@ const modelsData = {
         outputCost: "15.00",
         contextWindow: "128000"
     },
+    "GPT o1-preview": {
+        average: "--",
+        multiChoice: "90.80",
+        reasoning: "",
+        python: "92.40",
+        future: "",
+        math: "",
+        mathProblems: "85.50",
+        inputCost: "15.00",
+        outputCost: "60.00",
+        contextWindow: "128000"
+    },
+    "GPT o1-mini": {
+        average: "--",
+        multiChoice: "85.20",
+        reasoning: "",
+        python: "92.40",
+        future: "",
+        math: "",
+        mathProblems: "90.00",
+        inputCost: "3.00",
+        outputCost: "12.00",
+        contextWindow: "128000"
+    },
     "GPT-4o mini": {
         average: "--",
         multiChoice: "82.0",
@@ -218,10 +242,12 @@ const modelsData = {
 };
 const modelsNames = {
     "OpenAI": [
+        "GPT o1-preview",
+        "GPT o1-mini",
         "GPT-4",
         "GPT-4T 2024-04-09",
         "GPT-4o",
-        "GPT-4o mini"
+        "GPT-4o mini",
     ],
     "Anthropic": [
         "Claude 3 Opus",
