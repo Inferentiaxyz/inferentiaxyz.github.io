@@ -1,0 +1,2 @@
+AI Fraud Detection
+Abbiamo addestrato un AI su più di 400k comportamento dei profili su di un sito web per identificare i truffatori dagli utenti normali. Abbiamo identificato in tempo e fatto risparmiare 89000 euro.

@@ -1,0 +1,2 @@
+Ricerca semantica con RAG
+Abbiamo realizzato un motore di ricerca semantico basato su di un sistema RAG (Retrieval Augmented Reality) per cercare i brevetti nel modo più intuitivo possibile.
