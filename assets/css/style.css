@@ -15,7 +15,16 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+  /* width: 80%; */
+  margin: 0 auto;
 }
+
+/* @media (max-width: 768px) {
+  body {
+    width: 100%;
+  }
+} */
+
 
 a {
   color: #4154f1;
@@ -42,6 +51,21 @@ h6 {
 section {
   padding: 60px 0;
   overflow: hidden;
+  width: 70%;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  section {
+    width: 90%;
+  }
+  
+}
+
+@media (max-width: 768px) {
+  section {
+    width: 100%;
+  }
 }
 
 .section-header {
