@@ -135,10 +135,11 @@ function resetVideoOpacity() {
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#products">Products</a></li>
-          <li><a class="nav-link scrollto" href="/comparatore.html">Comparator</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#community">Linkedin</a></li>
+          <li><a class="nav-link scrollto" href="#cosa-facciamo">Servizi</a></li>
+          <li><a class="nav-link scrollto" href="#progetti">Casi d'Uso</a></li>
+
+          <li><a class="nav-link scrollto" href="#team">Chi Siamo</a></li>
+          <!-- <li><a class="nav-link scrollto" href="#community">Linkedin</a></li> -->
           <li><a class="getstarted scrollto" href="#contact">Let's talk</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -165,7 +166,7 @@ function resetVideoOpacity() {
           </div>
         </div>
         <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-          <img src="assets/img/logo_vect.png" class="img-fluid" alt="">
+          <img src="assets/img/logo_vect.png" id="logo-hero" class="img-fluid" alt="">
         </div>
       </div>
     </div>
@@ -260,6 +261,7 @@ function resetVideoOpacity() {
 
     </div>
   </section>
+
   <!-- End Counts Section -->
   
   <main id="main">
@@ -370,11 +372,14 @@ function resetVideoOpacity() {
   <!-- ======= Clients Section ======= -->
   <section id="paper" class="community">
     <div class="container" data-aos="fade-up">
+      
       <header class="section-header">
         <h2>Research</h2>
-        <p>We are up-to-date experts active in research!</p>
+        <p>Innovazione attraverso la Ricerca!</p>
+        <div class="mt-2" ><h5><small class="text-muted">Scopri i nostri contributi scientifici e come plasmiamo il futuro dell'AI attraverso pubblicazioni all'avanguardia.
+        </small></div>
       </header>
-      <div class="row">
+      <div class="row paper-row">
         <div class="col-lg-3 d-flex justify-content-center" style="padding-bottom: 30px;">
           <img src="assets/img/pubblication.jpg" alt="Publication Image" class="publication-image">
         </div>        
@@ -452,14 +457,15 @@ function resetVideoOpacity() {
               <div class="post-img">
                 <img src="assets\img\casi_duso\semantic_search\semantic_search_image.PNG" class="img-fluid" alt="Progetto 1">
               </div>
-              <h3 class="post-title">Ricerca semantica con RAG</h3>
-              <span class="post-date">Abbiamo realizzato un motore di ricerca semantico basato su di un sistema RAG (Retrieval Augmented Reality) per cercare i brevetti nel modo più intuitivo possibile.
-              </span>
+              <h3 class="post-title">Ricerca Semantica Intelligente</h3>
+              <span class="post-date">
+                Usando il <strong>RAG (Retrieval-Augmented Generation)</strong>, offriamo <strong>accesso avanzato</strong> a documenti complessi, fornendo un vantaggio strategico <strong>nell’analisi delle informazioni</strong>.
+                            </span>
             </div>
           </div>
 
           <!-- Progetto 2 -->
-          <div class="col-lg-4 mb-3">
+          <!-- <div class="col-lg-4 mb-3">
             <div class="post-box">
               <div class="post-img">
                 <img src="assets\img\casi_duso\tracking_people\tracking_people.png" class="img-fluid" alt="Progetto 2">
@@ -467,7 +473,7 @@ function resetVideoOpacity() {
               <h3 class="post-title">Tracking people</h3>
               <span class="post-date">Progetto di Computer vision in grado di identificare e tracciare le persone per rendere le città più sicure.</span>
             </div>
-          </div>
+          </div> -->
 
           <!-- Progetto 3 -->
           <div class="col-lg-4 mb-3">
@@ -475,21 +481,23 @@ function resetVideoOpacity() {
               <div class="post-img">
                 <img src="assets\img\casi_duso\virtual_try_on\VirtualTryOn.jpg" class="img-fluid" alt="Progetto 3">
               </div>
-              <h3 class="post-title">Titolo Progetto 3</h3>
-              <span class="post-date">Breve descrizione del progetto 3.</span>
+              <h3 class="post-title">Virtual Try-On per il Retail</h3>
+              <span class="post-date">Usando modelli generativi avanzati, permette agli utenti di provare virtualmente i prodotti, aumentando l’engagement e le conversioni.
+
+              </span>
             </div>
           </div>
 
           <!-- Progetto 4 -->
-          <div class="col-lg-4 mb-3">
+          <!-- <div class="col-lg-4 mb-3">
             <div class="post-box">
               <div class="post-img">
                 <img src="assets\img\casi_duso\ai_dentisti\immagine2.jpg" class="img-fluid" alt="Progetto 4">
               </div>
-              <h3 class="post-title">Titolo Progetto 4</h3>
-              <span class="post-date">Breve descrizione del progetto 4.</span>
+              <h3 class="post-title">AI Chatbot per Dentisti</h3>
+              <span class="post-date">Automatizza l'analisi delle immagini dentali e offre raccomandazioni personalizzate, migliorando l’assistenza ai pazienti.</span>
             </div>
-          </div>
+          </div> -->
 
           <!-- Progetto 5 -->
           <div class="col-lg-4 mb-3">
@@ -497,12 +505,12 @@ function resetVideoOpacity() {
               <div class="post-img">
                 <img src="assets\img\casi_duso\sales forecasting\immagine.PNG" class="img-fluid" alt="Progetto 5">
               </div>
-              <h3 class="post-title">Titolo Progetto 5</h3>
-              <span class="post-date">Breve descrizione del progetto 5.</span>
+              <h3 class="post-title">Predizione Vendite</h3>
+              <span class="post-date">Sistema che fornisce previsioni di domanda per aiutare il cliente a ottimizzare l’inventario e migliorare la pianificazione.</span>
             </div>
           </div>
 
-          <!-- Progetto 6 -->
+          <!-- Progetto 6
           <div class="col-lg-4 mb-3">
             <div class="post-box">
               <div class="post-img">
@@ -511,7 +519,7 @@ function resetVideoOpacity() {
               <h3 class="post-title">Titolo Progetto 6</h3>
               <span class="post-date">Breve descrizione del progetto 6.</span>
             </div>
-          </div>
+          </div> -->
 
           <!-- Progetto 7 -->
           <div class="col-lg-4 mb-3">
@@ -519,8 +527,8 @@ function resetVideoOpacity() {
               <div class="post-img">
                 <img src="assets\img\casi_duso\chatbot_naturale\immagine.PNG" class="img-fluid" alt="Progetto 7">
               </div>
-              <h3 class="post-title">Chatbot Naturalma</h3>
-              <span class="post-date">Agente AI in grado di fornire consigli su prodotti naturali per risolvere i problemi più comuni delle persone e promuovendo i prodotti di naturali di Naturalma. La sua knoledge base è stata aumentata con paper scientifici!</span>
+              <h3 class="post-title">Consulente Virtuale per Promozione Prodotti</h3>
+              <span class="post-date">Agente AI che fornisce consigli su prodotti, supportando la gamma del cliente con risposte affidabili basate sulla documentazione fornita.</span>
             </div>
           </div>
 
@@ -530,8 +538,19 @@ function resetVideoOpacity() {
               <div class="post-img">
                 <img src="assets\img\casi_duso\FraudDetection\frodi.jpg" class="img-fluid" alt="Progetto 8">
               </div>
-              <h3 class="post-title">Fraud Detection</h3>
-              <span class="post-date">Sistema AI (Anomaly detection) in grado di identificare le frodi analizzando tutte le transazioni in corso.</span>
+              <h3 class="post-title">Sistema di Rilevamento Frodi</h3>
+              <span class="post-date">Individua anomalie nelle transazioni grazie all'AI, migliorando la sicurezza e riducendo il rischio finanziario.</span>
+            </div>
+          </div>
+
+          <!-- Progetto 9 -->
+          <div class="col-lg-4 mb-3">
+            <div class="post-box">
+              <div class="post-img">
+                <img src="assets\img\casi_duso\FraudDetection\frodi.jpg" class="img-fluid" alt="Progetto 8">
+              </div>
+              <h3 class="post-title">Automazione Fatture</h3>
+              <span class="post-date">Riduce l’inserimento manuale dei dati e velocizza i flussi di fatturazione, risparmiando tempo e minimizzando gli errori.</span>
             </div>
           </div>
 
@@ -547,9 +566,9 @@ function resetVideoOpacity() {
       <div class="container" data-aos="fade-up">
 
         <header class="section-header">
-          <h2>I Nostri Founder</h2>
-          <p>Le Menti Dietro il Nostro Successo</p>
-          <div class="mt-2" ><h5><small class="text-muted">Guidati dalla passione per l'AI, i nostri founder trasformano idee in soluzioni concrete per affrontare le sfide delle aziende di oggi.</small></h5>
+          <h2>I Founder</h2>
+          <p>Dalla Passione all’Impatto</p>
+          <div class="mt-2" ><h5><small class="text-muted">Guidati dalla passione per l’AI, trasformiamo le idee in soluzioni pratiche per affrontare le sfide della tua azienda.</small></h5>
         </header>
 
         <div class="row gy-2">
@@ -594,11 +613,11 @@ function resetVideoOpacity() {
       </div>
 
     </section><!-- End Team Section -->
+      <!-- ======= Clients Section ======= -->
+  <div class="trustpilot-widget" data-locale="it-IT" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="66cf7c9aaa9668025cb30241" data-style-height="52px" data-style-width="100%">
+    <a href="https://it.trustpilot.com/review/inferentia.xyz" target="_blank" rel="noopener">Trustpilot</a>
+  </div>
     
-    <!-- ======= Clients Section ======= -->
-    <div class="trustpilot-widget" data-locale="it-IT" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="66cf7c9aaa9668025cb30241" data-style-height="52px" data-style-width="100%">
-      <a href="https://it.trustpilot.com/review/inferentia.xyz" target="_blank" rel="noopener">Trustpilot</a>
-    </div>
     
 <section id="community" class="community">
 
