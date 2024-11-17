@@ -1506,6 +1506,10 @@ section {
   overflow: hidden;
 }
 
+.team .member .member-img img {
+  width: 100%;
+}
+
 .team .member .member-img:after {
   position: absolute;
   content: "";
@@ -1514,7 +1518,7 @@ section {
   height: 100%;
   width: 100%;
   background: url(../img/team-shape.svg) no-repeat center bottom;
-  background-size: contain;
+  /* background-size: contain; */
   z-index: 1;
 }
 
