@@ -37,13 +37,6 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  <!-- <script src="assets/js/chat.js"></script> -->
-  <!-- =======================================================
-  * Template Name: Inferentia - v1.12.0
-  * Template URL: https://bootstrapmade.com/Inferentia-bootstrap-startup-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -55,65 +48,6 @@
 
   gtag('config', 'G-XTPD53MNTL');
 </script>
-<!-- <script>
-  
-document.addEventListener('DOMContentLoaded', function() {
-    const playButtons = document.querySelectorAll('.play-button');
-
-    playButtons.forEach(function(button) {
-        button.addEventListener('click', function(e) {
-            // Find the nearest video sibling to the clicked button
-            const videoElement = e.target.closest('.post-img').querySelector('video');
-
-            videoElement.style.display = 'block';  // Make the video visible
-            // Check if video is already in fullscreen, if not request fullscreen
-            if (document.fullscreenElement === null) {
-                if (videoElement.requestFullscreen) {
-                    videoElement.requestFullscreen();
-                } else if (videoElement.mozRequestFullScreen) { /* Firefox */
-                    videoElement.mozRequestFullScreen();
-                } else if (videoElement.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
-                    videoElement.webkitRequestFullscreen();
-                } else if (videoElement.msRequestFullscreen) { /* IE/Edge */
-                    videoElement.msRequestFullscreen();
-                }
-            }
-
-            videoElement.play();
-        });
-    });
-    const videos = document.querySelectorAll('video');
-    videos.forEach(video => {
-        video.addEventListener('webkitendfullscreen', function() {
-            // This event is triggered when fullscreen is closed on Safari for iOS
-            resetVideoOpacity();
-        });
-    });
-
-    // Existing code
-document.addEventListener('fullscreenchange', handleFullscreenChange);
-
-// Vendor-specific events for fullscreen changes
-document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-document.addEventListener('mozfullscreenchange', handleFullscreenChange);
-document.addEventListener('msfullscreenchange', handleFullscreenChange);
-/* document.addEventListener('webkitendfullscreen', handleFullscreenChange); */
-/* document.addEventListener('onwebkitfullscreenchange', handleFullscreenChange); */
-
-function handleFullscreenChange() {
-    if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
-        resetVideoOpacity();
-    }
-}
-});
-function resetVideoOpacity() {
-    const videos = document.querySelectorAll('video');
-    videos.forEach(video => video.style.display = 'none');
-    videos.forEach(video => video.pause());
-}
-
-
-</script> -->
 
 <body>
     <script src="https://cdn.jsdelivr.net/gh/manucaralmo/GlowCookies@3.1.7/src/glowCookies.min.js"></script>
@@ -158,12 +92,15 @@ function resetVideoOpacity() {
           <h1 data-aos="fade-up">Potenzia il Tuo Business con l’AI</h1>
           <h2 data-aos="fade-up" data-aos-delay="00">Trasforma le operazioni, stimola la crescita e sblocca il potenziale con soluzioni AI su misura.</h2>
           <div data-aos="fade-up" data-aos-delay="00">
-            <div class="text-center text-lg-start">
-              <a href="#contact" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                <span>Parliamo</span>
-                <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
+            <div class="d-flex">
+              <div class="text-center text-lg-start">
+                <a href="#contact" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                  <span>Parliamo</span>
+                  <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+              <img src="assets/img/trustpilot.png" style="height:100px;" loading="lazy" alt="">
+            </div>            
           </div>
         </div>
         <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="0">
@@ -179,7 +116,7 @@ function resetVideoOpacity() {
     <div class="container" data-aos="fade-up">
 
       <header class="section-header">
-        <h2>Our Clients</h2>
+        <h2>I nostri clienti</h2>
         <p>30+ aziende hanno innovato con noi</p>
         <div class="mt-2" ><h5><small class="text-muted">
           I nostri clienti hanno trasformato il loro modo di lavorare, raggiungendo nuovi livelli di efficienza e innovazione.
@@ -215,19 +152,21 @@ function resetVideoOpacity() {
               <img loading="lazy" src="assets/img/clients/bestshopping2.png" class="img-fluid" alt="BestShopping">
             </a>
           </div>
+          <div class="swiper-slide">
+            <a href="https://www.audioboost.it/it/" target="_blank">
+              <img loading="lazy" src="assets/img/clients/audioboost4.png" class="img-fluid" alt="BestShopping">
+            </a>
+          </div>
         </div>
         <div class="swiper-pagination"></div>
-      </div>
-      
+      </div>      
     </div>
-
   </section>
+
   <!-- ======= Counts Section ======= -->
-  <section id="counts" class="counts" style="padding-top: 0px;">
+  <section id="counts" class="counts" style="padding-top: 30px;">
     <div class="container" data-aos="fade-up">
-
       <div class="row gy-4">
-
         <div class="col-lg-4 col-md-6" style="margin: 2px auto;">
           <div class="count-box">
             <i class="bi bi-clock-history"></i>
@@ -327,7 +266,10 @@ function resetVideoOpacity() {
       
             <div class="col-lg-4 mb-3" data-aos="fade-up" data-aos-delay="100">
               <div class="post-box">
-                <h3 class="post-title">🤖 AI Generativa</h3>
+                <div class="post-img">
+                  <img loading="lazy" src="assets/img/aigenerativa.jpg" class="img-fluid" alt="Progetto 1">
+                </div>
+                <h3 class="post-title">AI Generativa</h3>
                 <span class="post-date">
                   Libera risorse, aumenta la precisione e spingi la produttività al massimo.</span>
                 <ul class="mt-3">
@@ -341,7 +283,10 @@ function resetVideoOpacity() {
       
             <div class="col-lg-4 mb-3" data-aos="fade-up" data-aos-delay="200">
               <div class="post-box">
-                <h3 class="post-title">📊 Machine Learning</h3>
+                <div class="post-img">
+                  <img loading="lazy" src="assets/img/machinelearning.jpg" class="img-fluid" alt="Progetto 1">
+                </div>
+                <h3 class="post-title">Machine Learning</h3>
                 <span class="post-date">Ottieni approfondimenti per decisioni più intelligenti e strategiche.</span>
                 <ul class="mt-3">
                   <li><strong>Modelli personalizzati</strong> </li>
@@ -354,7 +299,10 @@ function resetVideoOpacity() {
       
             <div class="col-lg-4 mb-3" data-aos="fade-up" data-aos-delay="300">
               <div class="post-box">
-                <h3 class="post-title">👀 Computer Vision</h3>
+                <div class="post-img">
+                  <img loading="lazy" src="assets/img/computer_vision2.jpg" class="img-fluid" alt="Progetto 1">
+                </div>
+                <h3 class="post-title">Computer Vision</h3>
                 <span class="post-date">Soluzioni potenti per trasformare immagini e video in valore concreto per il tuo business.</span>
                 <ul class="mt-3">
                   <li><strong>Sicurezza</strong> </li>
@@ -387,7 +335,7 @@ function resetVideoOpacity() {
         <div class="col-lg-6 d-flex align-items-center justify-content-center">
           <div class="d-flex flex-column align-items-end">
             <h2>Agnostic Label-Only Membership Inference Attack</h2>
-            <p>Il nostro lavoro su <b>privacy preserving ML</b> è stato pubblicato alla <b>International Conference on Network and System Security (NSS)</b> 🌐🔒</p>
+            <p>Il nostro lavoro su <b>privacy preserving ML</b> è stato pubblicato alla <b>International Conference on Network and System Security (NSS)</b></p>
           </div>
         </div>
         <div class="col-lg-3 d-flex align-items-center justify-content-center">
@@ -615,11 +563,57 @@ function resetVideoOpacity() {
 
     </section><!-- End Team Section -->
       <!-- ======= Clients Section ======= -->
+  <!--
   <div class="trustpilot-widget" data-locale="it-IT" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="66cf7c9aaa9668025cb30241" data-style-height="52px" data-style-width="100%">
     <a href="https://it.trustpilot.com/review/inferentia.xyz" target="_blank" rel="noopener">Trustpilot</a>
   </div>
-    
-    
+  -->
+
+  <section id="partnership" class="partnership">
+    <div class="container" data-aos="fade-up">
+  
+      <header class="section-header">
+        <h2>Partnership</h2>
+        <p>Connessi alla ricerca, proiettati al futuro.</p>
+      </header>
+  
+      <div class="row gy-4 justify-content-center">  
+        <div class="col-lg-3 col-md-4 col-6 d-flex flex-column align-items-center text-center">
+          <a href="#" target="_blank" class="d-block">
+            <img loading="lazy" src="assets/img/partnership/unibo.png" 
+                 class="img-fluid" alt="Università di Bologna" 
+                 style="width:150px; height:150px; object-fit:cover; border-radius:8px;">
+          </a>
+          <h4 class="mt-3 mb-1">Università di Bologna</h4>
+          <small class="text-muted">Collaborazione accademica</small>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-6 d-flex flex-column align-items-center text-center">
+          <a href="#" target="_blank" class="d-block">
+            <img loading="lazy" src="assets/img/partnership/unipi.png" 
+                 class="img-fluid" alt="Università di Pisa"
+                 style="width:150px; height:150px; object-fit:cover; border-radius:8px;">
+          </a>
+          <h4 class="mt-3 mb-1">Università di Pisa</h4>
+          <small class="text-muted">Ricerca e innovazione</small>
+        </div>
+  
+        <!-- Partner 4 -->
+        <div class="col-lg-3 col-md-4 col-6 d-flex flex-column align-items-center text-center">
+          <a href="#" target="_blank" class="d-block">
+            <img loading="lazy" src="assets/img/partnership/virginiatech.png" 
+                 class="img-fluid" alt="Virginia Tech"
+                 style="width:150px; height:150px; object-fit:cover; border-radius:8px;">
+          </a>
+          <h4 class="mt-3 mb-1">Virginia Tech</h4>
+          <small class="text-muted">Innovazione globale</small>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+
+  <!-- 
 <section id="community" class="community">
 
       <div class="container" data-aos="fade-up">
@@ -643,7 +637,7 @@ function resetVideoOpacity() {
         </div>
       </div>
     </section>
-    
+-->    
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
 
@@ -652,6 +646,9 @@ function resetVideoOpacity() {
         <header class="section-header">
           <h2>Contatti</h2>
           <p>Inizia l'innovazione con l’AI</p>
+          <div class="text-center mb-4">
+            <img src="assets/img/trustpilot.png" style="height:100px;" loading="lazy" alt="">
+          </div>
         </header>
 
         <div class="row gy-4">
@@ -687,8 +684,7 @@ function resetVideoOpacity() {
           <div class="col-lg-6">
             <form   method="POST" action="https://api.web3forms.com/submit" id="form" class="php-email-form">
               <input type="hidden" name="access_key" value="0a267740-4f7a-417b-985f-20b7983145f6" />
-              <div class="row gy-4">
-
+              <div class="row gy-4">                
                 <div class="col-md-6">
                   <input type="text" name="name" class="form-control" placeholder="Nome" required>
                 </div>
