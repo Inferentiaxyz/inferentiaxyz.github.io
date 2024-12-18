@@ -890,7 +890,15 @@ form.addEventListener('submit', function(e) {
           window.voiceflow.chat.load({
             verify: { projectID: '6558c2a0f587c021f85e9aa9' },
             url: 'https://general-runtime.voiceflow.com',
-            versionID: 'production'
+            versionID: 'production',
+            launch: {
+            event: {
+                type: "launch",
+                payload: {
+                  browserLanguage: navigator.language || navigator.languages[0]
+                }
+              }
+            }
           });
         }
         v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
