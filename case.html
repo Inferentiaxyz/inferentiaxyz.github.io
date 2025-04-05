@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casas Rurales Salamanca - 2-3 de mayo</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .card-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 400px;
+            height: 580px;
+            position: relative;
+            margin: 0 auto;
+        }
+        .card {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            background-color: white;
+        }
+        .card-img {
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .btn-action {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-action:hover {
+            transform: scale(1.1);
+        }
+        .btn-dislike {
+            background-color: white;
+            color: #ff4757;
+        }
+        .btn-like {
+            background-color: white;
+            color: #2ed573;
+        }
+        .btn-info {
+            background-color: white;
+            color: #1e90ff;
+        }
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+        .indicator.active {
+            background-color: #1e90ff;
+            width: 20px;
+            border-radius: 5px;
+        }
+        .features-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .feature-tag {
+            background-color: #f0f7ff;
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #1e90ff;
+        }
+        .price-tag {
+            background-color: #2ed573;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: bold;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .rating {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: rgba(0,0,0,0.6);
+            color: gold;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+        .card-hidden {
+            transform: translateX(150%) rotate(30deg);
+            opacity: 0;
+        }
+        .card-visible {
+            transform: translateX(0) rotate(0);
+            opacity: 1;
+            z-index: 5;
+        }
+        .card-behind {
+            transform: scale(0.9) translateY(20px);
+            opacity: 0.6;
+            z-index: 1;
+        }
+        .image-gallery {
+            position: relative;
+            height: 240px;
+        }
+        .image-gallery img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .image-gallery img.active {
+            opacity: 1;
+        }
+        .gallery-nav {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+        }
+        .book-btn {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
+        .book-btn:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+        }
+        .instructions {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .swipe-instruction {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .swipe-arrow {
+            font-size: 24px;
+            color: #1e90ff;
+            animation: swipe-animation 2s infinite;
+        }
+        @keyframes swipe-animation {
+            0% { transform: translateX(0); opacity: 0.5; }
+            50% { transform: translateX(15px); opacity: 1; }
+            100% { transform: translateX(0); opacity: 0.5; }
+        }
+        @media print {
+            body {
+                background-color: white;
+            }
+            .card-container {
+                page-break-inside: avoid;
+            }
+            .instructions, .actions, .indicators {
+                page-break-before: auto;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen py-8 px-4">
+    <header class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-blue-600 mb-2">Casas Rurales en Salamanca</h1>
+        <p class="text-gray-600">Para nuestro viaje del 2-3 de mayo de 2025</p>
+    </header>
+    
+    <div class="instructions">
+        <h2 class="text-xl font-bold mb-3 text-gray-800">¿Cómo funciona?</h2>
+        <p class="text-gray-700 mb-2">¡Desliza entre las opciones de casas rurales para nuestra estancia en Salamanca con un simple deslizamiento!</p>
+        
+        <div class="flex flex-col sm:flex-row justify-center gap-6 mt-4">
+            <div class="text-center">
+                <div class="flex justify-center">
+                    <div class="swipe-arrow">
+                        <i class="fas fa-long-arrow-alt-right"></i>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mt-1">Desliza a la derecha para las opciones que te gustan</p>
+            </div>
+            <div class="text-center">
+                <div class="flex justify-center">
+                    <div class="swipe-arrow" style="transform: scaleX(-1);">
+                        <i class="fas fa-long-arrow-alt-right"></i>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mt-1">Desliza a la izquierda para pasar</p>
+            </div>
+            <div class="text-center">
+                <div class="flex justify-center">
+                    <i class="fas fa-images text-blue-500 text-2xl"></i>
+                </div>
+                <p class="text-sm text-gray-600 mt-1">Toca la imagen para ver más fotos</p>
+            </div>
+        </div>
+        
+        <p class="text-gray-700 mt-4">En el escritorio puedes usar los botones debajo de cada tarjeta. Cada casa rural tiene un costo de 30-35€ por persona por noche.</p>
+    </div>
+
+    <div class="card-container" id="cardContainer">
+        <!-- Casa Rural El Caldero -->
+        <div class="card card-visible" id="card1">
+            <div class="image-gallery" id="gallery1">
+                <img src="https://webp.er2.co/es/salamanca/523f64e5dc03c/750/524c51e62f78b.webp" class="active" alt="Casa Rural El Caldero">
+                <img src="https://webp.er2.co/es/salamanca/523f64e5dc03c/750/523f6bd36ab4d.webp" alt="Casa Rural El Caldero">
+                <img src="https://webp.er2.co/es/salamanca/523f64e5dc03c/750/524c5198069f3.webp" alt="Casa Rural El Caldero">
+                <div class="rating"><i class="fas fa-star"></i> 4 Estrellas</div>
+                <div class="price-tag">30€/persona</div>
+                <div class="gallery-nav">
+                    <span class="indicator active" data-index="0"></span>
+                    <span class="indicator" data-index="1"></span>
+                    <span class="indicator" data-index="2"></span>
+                </div>
+            </div>
+            <div class="p-4">
+                <h2 class="text-xl font-bold mb-1">Casa Rural El Caldero</h2>
+                <p class="text-gray-600 text-sm mb-3">Sorihuela, Béjar (Salamanca)</p>
+                <p class="text-gray-700 text-sm mb-3">La antigua casa del calderero, completamente reformada en 2013 en piedra, madera y hierro forjado. Ubicada en el casco histórico de Sorihuela, es perfecta para grupos de hasta 10 personas.</p>
+                
+                <div class="features-list">
+                    <span class="feature-tag"><i class="fas fa-bed"></i> 4 Habitaciones</span>
+                    <span class="feature-tag"><i class="fas fa-bath"></i> 4 Baños</span>
+                    <span class="feature-tag"><i class="fas fa-wifi"></i> Wi‑Fi</span>
+                    <span class="feature-tag"><i class="fas fa-utensils"></i> BBQ</span>
+                    <span class="feature-tag"><i class="fas fa-fire"></i> Chimenea</span>
+                    <span class="feature-tag"><i class="fas fa-paw"></i> Mascotas</span>
+                </div>
+                
+                <div class="mt-4 mb-2">
+                    <h3 class="font-bold text-gray-800">Ventajas:</h3>
+                    <ul class="text-sm text-gray-700 ml-4 list-disc">
+                        <li>Cada habitación tiene su propio baño completo</li>
+                        <li>Patio con barbacoa</li>
+                        <li>Cerca de todos los servicios del pueblo</li>
+                        <li>Precio total para 10 personas: aproximadamente 300€/noche</li>
+                    </ul>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="https://www.escapadarural.com/casa-rural/salamanca/casa-rural-el-caldero" target="_blank" class="book-btn">
+                        <i class="fas fa-calendar-check mr-1"></i> Reservar
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Casas Rurales Miradores -->
+        <div class="card card-behind" id="card2">
+            <div class="image-gallery" id="gallery2">
+                <img src="https://webp.er2.co/es/salamanca/0000000016114/750/555f19661954c.webp" class="active" alt="Casas Rurales Miradores">
+                <img src="https://webp.er2.co/es/salamanca/0000000016114/750/5fd672292829b.webp" alt="Casas Rurales Miradores">
+                <img src="https://webp.er2.co/es/salamanca/0000000016114/750/555f196f407bf.webp" alt="Casas Rurales Miradores">
+                <div class="rating"><i class="fas fa-star"></i> 4 Estrellas</div>
+                <div class="price-tag">35€/persona</div>
+                <div class="gallery-nav">
+                    <span class="indicator active" data-index="0"></span>
+                    <span class="indicator" data-index="1"></span>
+                    <span class="indicator" data-index="2"></span>
+                </div>
+            </div>
+            <div class="p-4">
+                <h2 class="text-xl font-bold mb-1">Casas Rurales Miradores</h2>
+                <p class="text-gray-600 text-sm mb-3">Guijo de Ávila (Salamanca)</p>
+                <p class="text-gray-700 text-sm mb-3">Casas rurales con SPA situadas en plena campiña Charra, entre campos tradicionales de robles y rovedos. Espectaculares miradores con vista a la Sierra de Gredos y Béjar.</p>
+                
+                <div class="features-list">
+                    <span class="feature-tag"><i class="fas fa-spa"></i> SPA</span>
+                    <span class="feature-tag"><i class="fas fa-hot-tub"></i> Jacuzzi</span>
+                    <span class="feature-tag"><i class="fas fa-swimming-pool"></i> Piscina</span>
+                    <span class="feature-tag"><i class="fas fa-wifi"></i> Wi‑Fi</span>
+                    <span class="feature-tag"><i class="fas fa-gamepad"></i> Sala de juegos</span>
+                    <span class="feature-tag"><i class="fas fa-fire"></i> Chimenea</span>
+                </div>
+                
+                <div class="mt-4 mb-2">
+                    <h3 class="font-bold text-gray-800">Ventajas:</h3>
+                    <ul class="text-sm text-gray-700 ml-4 list-disc">
+                        <li>SPA completa: sauna, jacuzzi e hidromasaje</li>
+                        <li>Sala de juegos incluida, sin límites de horario</li>
+                        <li>Internet de alta velocidad (Fibra 500MB)</li>
+                        <li>A 20 minutos de la estación de esquí de la Covatilla</li>
+                    </ul>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="https://www.escapadarural.com/casa-rural/salamanca/el-mirador-de-la-covatilla" target="_blank" class="book-btn">
+                        <i class="fas fa-calendar-check mr-1"></i> Reservar
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Casa Salva -->
+        <div class="card card-hidden" id="card3">
+            <div class="image-gallery" id="gallery3">
+                <img src="https://webp.er2.co/es/salamanca/0000000007732/750/59a428f40e495.webp" class="active" alt="Casa Salva">
+                <img src="https://webp.er2.co/es/salamanca/0000000007732/750/5b8bc852bcc36.webp" alt="Casa Salva">
+                <img src="https://webp.er2.co/es/salamanca/0000000007732/750/50f9280748fbe.webp" alt="Casa Salva">
+                <div class="rating"><i class="fas fa-star"></i> 4 Estrellas</div>
+                <div class="price-tag">30€/persona</div>
+                <div class="gallery-nav">
+                    <span class="indicator active" data-index="0"></span>
+                    <span class="indicator" data-index="1"></span>
+                    <span class="indicator" data-index="2"></span>
+                </div>
+            </div>
+            <div class="p-4">
+                <h2 class="text-xl font-bold mb-1">Casa Salva</h2>
+                <p class="text-gray-600 text-sm mb-3">La Rinconada de la Sierra (Salamanca)</p>
+                <p class="text-gray-700 text-sm mb-3">Casa rural de 4 estrellas con excelentes vistas a la Sierra de Francia. Perfecta para grupos de hasta 16 personas, con alojamiento siempre privado para un solo grupo.</p>
+                
+                <div class="features-list">
+                    <span class="feature-tag"><i class="fas fa-swimming-pool"></i> Piscina</span>
+                    <span class="feature-tag"><i class="fas fa-bed"></i> 9 Habitaciones</span>
+                    <span class="feature-tag"><i class="fas fa-bath"></i> 4 Baños</span>
+                    <span class="feature-tag"><i class="fas fa-hot-tub"></i> Hidromasaje</span>
+                    <span class="feature-tag"><i class="fas fa-utensils"></i> BBQ</span>
+                    <span class="feature-tag"><i class="fas fa-wifi"></i> Wi‑Fi</span>
+                </div>
+                
+                <div class="mt-4 mb-2">
+                    <h3 class="font-bold text-gray-800">Ventajas:</h3>
+                    <ul class="text-sm text-gray-700 ml-4 list-disc">
+                        <li>Alojamiento siempre para un solo grupo (privacidad total)</li>
+                        <li>Jardín, piscina privada y zona de barbacoa</li>
+                        <li>Área de juegos para niños con columpios y minigolf</li>
+                        <li>Una habitación con TV y baño con bañera de hidromasaje</li>
+                    </ul>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="https://www.escapadarural.com/casa-rural/salamanca/casa-salva" target="_blank" class="book-btn">
+                        <i class="fas fa-calendar-check mr-1"></i> Reservar
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Casa Rural Spa La Chirumba -->
+        <div class="card card-hidden" id="card4">
+            <div class="image-gallery" id="gallery4">
+                <img src="https://webp.er2.co/es/salamanca/51ed740d96797/750/64f6d7478b353.webp" class="active" alt="Casa Rural Spa La Chirumba">
+                <img src="https://webp.er2.co/es/salamanca/51ed740d96797/750/55ca248289f98.webp" alt="Casa Rural Spa La Chirumba">
+                <img src="https://webp.er2.co/es/salamanca/51ed740d96797/750/64f6d74abb81a.webp" alt="Casa Rural Spa La Chirumba">
+                <div class="rating"><i class="fas fa-star"></i> 4.88/5</div>
+                <div class="price-tag">33€/persona</div>
+                <div class="gallery-nav">
+                    <span class="indicator active" data-index="0"></span>
+                    <span class="indicator" data-index="1"></span>
+                    <span class="indicator" data-index="2"></span>
+                </div>
+            </div>
+            <div class="p-4">
+                <h2 class="text-xl font-bold mb-1">Casa Rural Spa La Chirumba</h2>
+                <p class="text-gray-600 text-sm mb-3">A 5 km de Salamanca</p>
+                <p class="text-gray-700 text-sm mb-3">Ático rural de lujo a solo 3 km de Salamanca. Con 4 habitaciones, 3 baños (uno con jacuzzi), dos cocinas, piscina climatizada y diversas áreas recreativas.</p>
+                
+                <div class="features-list">
+                    <span class="feature-tag"><i class="fas fa-swimming-pool"></i> Piscina climatizada</span>
+                    <span class="feature-tag"><i class="fas fa-hot-tub"></i> Jacuzzi</span>
+                    <span class="feature-tag"><i class="fas fa-bed"></i> 4 Habitaciones</span>
+                    <span class="feature-tag"><i class="fas fa-bath"></i> 3 Baños</span>
+                    <span class="feature-tag"><i class="fas fa-gamepad"></i> Billar</span>
+                    <span class="feature-tag"><i class="fas fa-utensils"></i> BBQ</span>
+                </div>
+                
+                <div class="mt-4 mb-2">
+                    <h3 class="font-bold text-gray-800">Ventajas:</h3>
+                    <ul class="text-sm text-gray-700 ml-4 list-disc">
+                        <li>Cerca de la ciudad de Salamanca (5 km)</li>
+                        <li>Todas las instalaciones están dentro del edificio y son de uso exclusivo</li>
+                        <li>Vista panorámica de Salamanca y el campo</li>
+                        <li>Horno de ladrillos y barbacoa</li>
+                    </ul>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="https://www.casaruralensalamanca.com/accommodation/casa-rural-spa-la-chirumba" target="_blank" class="book-btn">
+                        <i class="fas fa-calendar-check mr-1"></i> Reservar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="actions flex justify-center mt-6 gap-4">
+        <div class="btn-action btn-dislike" id="dislikeBtn">
+            <i class="fas fa-times fa-2x"></i>
+        </div>
+        <!-- Botón de link -->
+        <div class="btn-action btn-info" id="infoBtn">
+            <i class="fas fa-link fa-2x"></i>
+        </div>
+        <div class="btn-action btn-like" id="likeBtn">
+            <i class="fas fa-heart fa-2x"></i>
+        </div>
+    </div>
+    
+    <div class="indicators flex justify-center mt-5">
+        <span class="indicator active" data-card="1"></span>
+        <span class="indicator" data-card="2"></span>
+        <span class="indicator" data-card="3"></span>
+        <span class="indicator" data-card="4"></span>
+    </div>
+    
+    <footer class="text-center mt-10 text-gray-500 text-sm">
+        <p>Creado para el viaje de grupo a Salamanca del 2-3 de mayo de 2025</p>
+        <p class="mt-1">Presupuesto por persona: 30-35€ por noche</p>
+        <p class="mt-1"><a href="https://www.escapadarural.com/casa-rural/salamanca/casa-rural-el-caldero" target="_blank" class="text-blue-600 hover:underline">Página oficial de la casa</a></p>
+    </footer>
+    
+    <script>
+        // Funcionalidad de deslizamiento de tarjetas
+        let currentCard = 1;
+        const totalCards = 4;
+        
+        // Inicializar tarjetas
+        function updateCards() {
+            document.querySelectorAll('.card').forEach(card => {
+                const cardId = parseInt(card.id.replace('card', ''));
+                
+                if (cardId === currentCard) {
+                    card.className = 'card card-visible';
+                } else if (cardId === currentCard + 1 || (currentCard === totalCards && cardId === 1)) {
+                    card.className = 'card card-behind';
+                } else {
+                    card.className = 'card card-hidden';
+                }
+            });
+            
+            // Actualizar indicadores
+            document.querySelectorAll('.indicators .indicator').forEach(indicator => {
+                const cardNum = parseInt(indicator.getAttribute('data-card'));
+                if (cardNum === currentCard) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+        
+        // Siguiente tarjeta
+        function nextCard() {
+            currentCard = currentCard < totalCards ? currentCard + 1 : 1;
+            updateCards();
+        }
+        
+        // Tarjeta anterior
+        function prevCard() {
+            currentCard = currentCard > 1 ? currentCard - 1 : totalCards;
+            updateCards();
+        }
+        
+        // Botón de me gusta
+        document.getElementById('likeBtn').addEventListener('click', () => {
+            const card = document.getElementById(`card${currentCard}`);
+            card.style.transform = 'translateX(150%) rotate(30deg)';
+            card.style.opacity = '0';
+            
+            setTimeout(() => {
+                nextCard();
+                card.style.transform = '';
+                card.style.opacity = '';
+            }, 300);
+        });
+        
+        // Botón de no me gusta
+        document.getElementById('dislikeBtn').addEventListener('click', () => {
+            const card = document.getElementById(`card${currentCard}`);
+            card.style.transform = 'translateX(-150%) rotate(-30deg)';
+            card.style.opacity = '0';
+            
+            setTimeout(() => {
+                nextCard();
+                card.style.transform = '';
+                card.style.opacity = '';
+            }, 300);
+        });
+        
+        // Botón de link: abre el enlace oficial de la casa
+        document.getElementById('infoBtn').addEventListener('click', () => {
+            const card = document.getElementById(`card${currentCard}`);
+            const bookBtn = card.querySelector('.book-btn');
+            if (bookBtn) {
+                window.open(bookBtn.href, '_blank');
+            }
+        });
+        
+        // Clic en el indicador
+        document.querySelectorAll('.indicators .indicator').forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                currentCard = parseInt(indicator.getAttribute('data-card'));
+                updateCards();
+            });
+        });
+        
+        // Funcionalidad de deslizamiento táctil
+        let startX, moveX;
+        const cardContainer = document.getElementById('cardContainer');
+        
+        cardContainer.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        }, false);
+        
+        cardContainer.addEventListener('touchmove', (e) => {
+            if (!startX) return;
+            
+            moveX = e.touches[0].clientX;
+            const diff = moveX - startX;
+            
+            const card = document.getElementById(`card${currentCard}`);
+            const rotateVal = diff * 0.1;
+            
+            if (Math.abs(diff) > 20) {
+                card.style.transform = `translateX(${diff}px) rotate(${rotateVal}deg)`;
+            }
+        }, false);
+        
+        cardContainer.addEventListener('touchend', (e) => {
+            if (!startX || !moveX) {
+                startX = null;
+                moveX = null;
+                return;
+            }
+            
+            const diff = moveX - startX;
+            const card = document.getElementById(`card${currentCard}`);
+            
+            if (diff > 100) { // Deslizar a la derecha - me gusta
+                card.style.transform = 'translateX(150%) rotate(30deg)';
+                card.style.opacity = '0';
+                
+                setTimeout(() => {
+                    nextCard();
+                    card.style.transform = '';
+                    card.style.opacity = '';
+                }, 300);
+            } else if (diff < -100) { // Deslizar a la izquierda - no me gusta
+                card.style.transform = 'translateX(-150%) rotate(-30deg)';
+                card.style.opacity = '0';
+                
+                setTimeout(() => {
+                    nextCard();
+                    card.style.transform = '';
+                    card.style.opacity = '';
+                }, 300);
+            } else { // Volver a la posición
+                card.style.transform = '';
+            }
+            
+            startX = null;
+            moveX = null;
+        }, false);
+        
+        // Funcionalidad de la galería de imágenes
+        for (let i = 1; i <= totalCards; i++) {
+            const gallery = document.getElementById(`gallery${i}`);
+            const images = gallery.querySelectorAll('img');
+            const indicators = gallery.querySelectorAll('.indicator');
+            let currentImg = 0;
+            
+            gallery.addEventListener('click', () => {
+                currentImg = (currentImg + 1) % images.length;
+                
+                images.forEach((img, index) => {
+                    if (index === currentImg) {
+                        img.classList.add('active');
+                    } else {
+                        img.classList.remove('active');
+                    }
+                });
+                
+                indicators.forEach((ind, index) => {
+                    if (index === currentImg) {
+                        ind.classList.add('active');
+                    } else {
+                        ind.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Indicadores de navegación de la galería
+            indicators.forEach((indicator) => {
+                indicator.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentImg = parseInt(indicator.getAttribute('data-index'));
+                    
+                    images.forEach((img, index) => {
+                        if (index === currentImg) {
+                            img.classList.add('active');
+                        } else {
+                            img.classList.remove('active');
+                        }
+                    });
+                    
+                    indicators.forEach((ind, index) => {
+                        if (index === currentImg) {
+                            ind.classList.add('active');
+                        } else {
+                            ind.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        }
+        
+        // Inicializar
+        updateCards();
+    </script>
+</body>
+</html>
