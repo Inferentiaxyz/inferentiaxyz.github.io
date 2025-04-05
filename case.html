@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Card a Schermo Intero con Animazioni e Link</title>
+  <title>Card a Schermo Intero con Animazioni, Link e Prezzo</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <style>
@@ -70,6 +70,19 @@
       background-color: #1e90ff;
       width: 20px;
       border-radius: 5px;
+    }
+    /* Prezzo */
+    .price-tag {
+      background-color: #2ed573;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-weight: bold;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 5;
     }
     /* Contenuto della card */
     .card-content {
@@ -145,6 +158,8 @@
         <img src="https://webp.er2.co/es/salamanca/523f64e5dc03c/750/524c51e62f78b.webp" class="active" alt="Casa Rural El Caldero">
         <img src="https://webp.er2.co/es/salamanca/523f64e5dc03c/750/523f6bd36ab4d.webp" alt="Casa Rural El Caldero">
         <img src="https://webp.er2.co/es/salamanca/523f64e5dc03c/750/524c5198069f3.webp" alt="Casa Rural El Caldero">
+        <!-- Prezzo -->
+        <div class="price-tag">30€/persona</div>
         <div class="gallery-nav">
           <span class="indicator active" data-index="0"></span>
           <span class="indicator" data-index="1"></span>
@@ -185,6 +200,8 @@
         <img src="https://webp.er2.co/es/salamanca/0000000016114/750/555f19661954c.webp" class="active" alt="Casas Rurales Miradores">
         <img src="https://webp.er2.co/es/salamanca/0000000016114/750/5fd672292829b.webp" alt="Casas Rurales Miradores">
         <img src="https://webp.er2.co/es/salamanca/0000000016114/750/555f196f407bf.webp" alt="Casas Rurales Miradores">
+        <!-- Prezzo -->
+        <div class="price-tag">35€/persona</div>
         <div class="gallery-nav">
           <span class="indicator active" data-index="0"></span>
           <span class="indicator" data-index="1"></span>
@@ -224,6 +241,8 @@
         <img src="https://webp.er2.co/es/salamanca/0000000007732/750/59a428f40e495.webp" class="active" alt="Casa Salva">
         <img src="https://webp.er2.co/es/salamanca/0000000007732/750/5b8bc852bcc36.webp" alt="Casa Salva">
         <img src="https://webp.er2.co/es/salamanca/0000000007732/750/50f9280748fbe.webp" alt="Casa Salva">
+        <!-- Prezzo -->
+        <div class="price-tag">30€/persona</div>
         <div class="gallery-nav">
           <span class="indicator active" data-index="0"></span>
           <span class="indicator" data-index="1"></span>
@@ -263,6 +282,8 @@
         <img src="https://webp.er2.co/es/salamanca/51ed740d96797/750/64f6d7478b353.webp" class="active" alt="Casa Rural Spa La Chirumba">
         <img src="https://webp.er2.co/es/salamanca/51ed740d96797/750/55ca248289f98.webp" alt="Casa Rural Spa La Chirumba">
         <img src="https://webp.er2.co/es/salamanca/51ed740d96797/750/64f6d74abb81a.webp" alt="Casa Rural Spa La Chirumba">
+        <!-- Prezzo -->
+        <div class="price-tag">33€/persona</div>
         <div class="gallery-nav">
           <span class="indicator active" data-index="0"></span>
           <span class="indicator" data-index="1"></span>
