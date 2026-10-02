@@ -368,8 +368,6 @@ button { font: inherit; }
 }
 .to-top.show { opacity: 1; pointer-events: auto; transform: none; }
 .to-top svg { width: 0.875rem; height: 1.25rem; }
-/* keep voiceflow bubble clear of to-top */
-body.has-chat .to-top { bottom: 6rem; }
 
 /* ---------- reveal ---------- */
 .reveal { opacity: 0; transform: translateY(1.5rem); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); }

@@ -47,7 +47,7 @@
   </script>
 </head>
 
-<body class="has-chat">
+<body>
   <script src="https://cdn.jsdelivr.net/gh/manucaralmo/GlowCookies@3.1.7/src/glowCookies.min.js"></script>
   <script>
     glowCookies.start('it', {
@@ -445,19 +445,5 @@
   <a class="to-top" href="#top" aria-label="Top"><svg viewBox="0 0 14 20" aria-hidden="true"><path class="ico-down" style="stroke-width:1.8" d="M7 19V2M2 7l5-5 5 5"/></svg></a>
 
   <script src="../assets/brand/inferentia.js"></script>
-  <script>
-    (function(d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function() {
-        window.voiceflow.chat.load({
-          verify: { projectID: '6558c2a0f587c021f85e9aa9' },
-          url: 'https://general-runtime.voiceflow.com',
-          versionID: 'production',
-          launch: { event: { type: "launch", payload: { browserLanguage: navigator.language || navigator.languages[0] } } }
-        });
-      };
-      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-    })(document, 'script');
-  </script>
 </body>
 </html>
