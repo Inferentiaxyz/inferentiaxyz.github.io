@@ -2,3 +2,5 @@ _site/
 .sass-cache/
 .jekyll-metadata/
 .jekyll-cache/
+# brand source files (the .fig is >100MB, over the GitHub limit)
+rebranding/
